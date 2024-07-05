@@ -1,13 +1,19 @@
 package com.example.redactor;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.NumberBinding;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class SceneMainMenuController {
 
@@ -18,31 +24,149 @@ public class SceneMainMenuController {
     private URL location;
 
     @FXML
+    private BorderPane mainMenuBorderPane;
+
+    @FXML
+    private Label mainMenuCenterTopLabel;
+
+    @FXML
+    private AnchorPane mainMenuGeneralAnchorPane;
+
+    @FXML
+    private ImageView mainMenuGeneralImageView;
+
+    public ImageView getMainMenuIconImageView() {
+        return mainMenuIconImageView;
+    }
+
+    @FXML
     private ImageView mainMenuIconImageView;
 
-    @FXML
-    private Button mainMenuImageSelectGeneralButton;
+    public HBox getMainMenuTopHBox() {
+        return mainMenuTopHBox;
+    }
 
-    @FXML
-    private Button mainMenuImageSelectPlusButton;
 
-    @FXML
-    private Button mainMenuImageSelectTextButton;
+    public Button getMainMenuInfoButton() {
+        return mainMenuInfoButton;
+    }
 
     @FXML
     private Button mainMenuInfoButton;
 
+    public Button getMainMenuLoginButton() {
+        return mainMenuLoginButton;
+    }
+
     @FXML
     private Button mainMenuLoginButton;
 
+    public Label getMainMenuNameOfProjectLabel() {
+        return mainMenuNameOfProjectLabel;
+    }
+
+    @FXML
+    private Label mainMenuNameOfProjectLabel;
+
+    public Button getMainMenuRegisterButton() {
+        return mainMenuRegisterButton;
+    }
+
     @FXML
     private Button mainMenuRegisterButton;
+
+    public Button getMainMenuStartAnalysisButton() {
+        return mainMenuStartAnalysisButton;
+    }
 
     @FXML
     private Button mainMenuStartAnalysisButton;
 
     @FXML
-    void initialize() {
+    private HBox mainMenuTopHBox;
 
+    @FXML
+    private HBox mainMenuTopLeftHBox;
+
+    public HBox getMainMenuTopRightHBox() {
+        return mainMenuTopRightHBox;
+    }
+
+    @FXML
+    private HBox mainMenuTopRightHBox;
+
+    public AnchorPane getMainMenuGeneralAnchorPane() {
+        return mainMenuGeneralAnchorPane;
+    }
+
+    public BorderPane getMainMenuBorderPane() {
+        return mainMenuBorderPane;
+    }
+
+    public Label getMainMenuCenterTopLabel() {
+            return mainMenuCenterTopLabel;
+    }
+
+    public Button getMainMenuCenterButton() {
+        return mainMenuCenterButton;
+    }
+
+    public HBox getMainMenuCenterHBox() {
+        return mainMenuCenterHBox;
+    }
+
+    @FXML
+    private Button mainMenuCenterButton;
+
+    @FXML
+    private HBox mainMenuCenterHBox;
+
+    public VBox getMainMenuTopLabelVBox() {
+        return mainMenuTopLabelVBox;
+    }
+
+    @FXML
+    private VBox mainMenuTopLabelVBox;
+
+    public VBox getMainMenuBottomLabelVBox() {
+        return mainMenuBottomLabelVBox;
+    }
+
+    @FXML
+    private VBox mainMenuBottomLabelVBox;
+
+    @FXML
+    private ImageView mainMenuPlusImageView;
+
+    public ImageView getMainMenuPlusImageView() {
+        return mainMenuPlusImageView;
+    }
+
+    @FXML
+    void initialize() {
+        mainMenuCenterTopLabel.setAlignment(Pos.CENTER);
+        mainMenuCenterButton.setText("Выбрать\nизображение");
+        mainMenuCenterButton.setAlignment(Pos.CENTER_LEFT);
+        mainMenuStartAnalysisButton.setAlignment(Pos.CENTER);
+
+        mainMenuTopLabelVBox.heightProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("лейбел верхний: " + newValue.doubleValue());
+        });
+
+        mainMenuBottomLabelVBox.heightProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("низ " + newValue.doubleValue());
+        });
+
+        mainMenuGeneralAnchorPane.heightProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println(" anc: " + newValue.doubleValue());
+        });
+
+        mainMenuTopHBox.heightProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println(" красная хрень сверху: " + newValue.doubleValue());
+        });
+
+        mainMenuBorderPane.heightProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println(" бордер: " + newValue.doubleValue());
+        });
     }
 }
