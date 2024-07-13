@@ -72,7 +72,7 @@
     <top>
         <HBox fx:id="mainMenuTopHBox" prefHeight="38.0" prefWidth="743.0" style="-fx-background-color: #FC7777;" BorderPane.alignment="CENTER">
             <children>
-                <HBox fx:id="mainMenuTopLeftHBox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FC7777;" HBox.hgrow="ALWAYS">
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FC7777;" HBox.hgrow="ALWAYS">
                     <children>
                         <ImageView fx:id="mainMenuIconImageView" fitHeight="63.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -86,7 +86,7 @@
                         </Label>
                     </children>
                 </HBox>
-                <HBox fx:id="mainMenuTopRightHBox" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" style="-fx-background-color: #FC7777;" HBox.hgrow="ALWAYS">
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" style="-fx-background-color: #FC7777;" HBox.hgrow="ALWAYS">
                     <children>
                         <Button fx:id="mainMenuLoginButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="72.0" style="-fx-background-color: #FC7777; -fx-border-radius: 8px; -fx-border-width: 2px; -fx-border-color: #FFFFFF;" text="Вход" textFill="WHITE">
                             <font>

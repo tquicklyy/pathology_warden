@@ -18,12 +18,6 @@ import javafx.scene.layout.VBox;
 public class SceneMainMenuController {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
     private BorderPane mainMenuBorderPane;
 
     @FXML
@@ -85,16 +79,6 @@ public class SceneMainMenuController {
     @FXML
     private HBox mainMenuTopHBox;
 
-    @FXML
-    private HBox mainMenuTopLeftHBox;
-
-    public HBox getMainMenuTopRightHBox() {
-        return mainMenuTopRightHBox;
-    }
-
-    @FXML
-    private HBox mainMenuTopRightHBox;
-
     public AnchorPane getMainMenuGeneralAnchorPane() {
         return mainMenuGeneralAnchorPane;
     }
@@ -149,24 +133,7 @@ public class SceneMainMenuController {
         mainMenuCenterButton.setAlignment(Pos.CENTER_LEFT);
         mainMenuStartAnalysisButton.setAlignment(Pos.CENTER);
 
-        mainMenuTopLabelVBox.heightProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("лейбел верхний: " + newValue.doubleValue());
-        });
+        mainMenuStartAnalysisButton.setStyle("-fx-background-color: #808080");
 
-        mainMenuBottomLabelVBox.heightProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("низ " + newValue.doubleValue());
-        });
-
-        mainMenuGeneralAnchorPane.heightProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println(" anc: " + newValue.doubleValue());
-        });
-
-        mainMenuTopHBox.heightProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println(" красная хрень сверху: " + newValue.doubleValue());
-        });
-
-        mainMenuBorderPane.heightProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println(" бордер: " + newValue.doubleValue());
-        });
     }
 }

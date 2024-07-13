@@ -27,20 +27,10 @@ public class PathologyWardenApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load() );
 
-
         mainMenuStage.getIcons().add(new Image("file:./src/main/resources/images/logo-pathology-warden.png"));
         mainMenuStage.setTitle("Pathology Warden");
 
-        mainMenuStage.setMinWidth(MIN_WIDTH_STAGE);
-        mainMenuStage.setMinHeight(MIN_HEIGHT_STAGE);
-        mainMenuStage.setWidth(MIN_WIDTH_STAGE);
-        mainMenuStage.setHeight(MIN_HEIGHT_STAGE);
-        mainMenuStage.setScene(scene);
-        mainMenuStage.show();
-
         SceneMainMenuController mainController = fxmlLoader.getController();
-
-        System.out.println(scene.heightProperty().doubleValue());
         NumberBinding sizeOfMainMenuGeneralAnchorPane = Bindings.min(mainController.getMainMenuBorderPane().widthProperty().multiply(0.7), mainController.getMainMenuBorderPane().heightProperty().multiply(0.7));
         mainController.getMainMenuGeneralAnchorPane().maxHeightProperty().bind(sizeOfMainMenuGeneralAnchorPane);
         mainController.getMainMenuGeneralAnchorPane().maxWidthProperty().bind(sizeOfMainMenuGeneralAnchorPane);
@@ -56,8 +46,8 @@ public class PathologyWardenApplication extends Application {
         mainController.getMainMenuInfoButton().maxWidthProperty().bind(mainController.getMainMenuInfoButton().heightProperty());
         mainController.getMainMenuInfoButton().minWidthProperty().bind(mainController.getMainMenuInfoButton().heightProperty());
 
-        mainController.getMainMenuInfoButton().maxHeightProperty().bind(mainController.getMainMenuTopRightHBox().heightProperty().multiply(0.8));
-        mainController.getMainMenuInfoButton().minHeightProperty().bind(mainController.getMainMenuTopRightHBox().heightProperty().multiply(0.8));
+        mainController.getMainMenuInfoButton().maxHeightProperty().bind(mainController.getMainMenuTopHBox().heightProperty().multiply(0.8));
+        mainController.getMainMenuInfoButton().minHeightProperty().bind(mainController.getMainMenuTopHBox().heightProperty().multiply(0.8));
 
         mainController.getMainMenuRegisterButton().maxHeightProperty().bind(mainController.getMainMenuInfoButton().heightProperty());
         mainController.getMainMenuRegisterButton().minHeightProperty().bind(mainController.getMainMenuInfoButton().heightProperty());
@@ -120,6 +110,13 @@ public class PathologyWardenApplication extends Application {
         };
         mainMenuStage.xProperty().addListener(mainMenuStagePositionChangeListener);
         mainMenuStage.yProperty().addListener(mainMenuStagePositionChangeListener);
+
+        mainMenuStage.setMinWidth(MIN_WIDTH_STAGE);
+        mainMenuStage.setMinHeight(MIN_HEIGHT_STAGE);
+        mainMenuStage.setWidth(MIN_WIDTH_STAGE);
+        mainMenuStage.setHeight(MIN_HEIGHT_STAGE);
+        mainMenuStage.setScene(scene);
+        mainMenuStage.show();
     }
 
     private void resetTimerForMainMenuStageDragging(Stage stage) {
