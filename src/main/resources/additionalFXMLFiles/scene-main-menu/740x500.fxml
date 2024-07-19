@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainMenuBorderPane" prefHeight="500.0" prefWidth="740.0" styleClass="root" stylesheets="@../../../cssStyle/mainMenuBorderPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.redactor.SceneMainMenuController">
+<BorderPane fx:id="mainMenuBorderPane" prefHeight="500.0" prefWidth="740.0" styleClass="root" stylesheets="@../../cssStyle/mainMenuBorderPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.redactor.SceneMainMenuController">
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
             <children>
@@ -38,7 +38,7 @@
                               <ImageView fx:id="mainMenuGeneralImageView" fitHeight="459.0" fitWidth="529.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         <StackPane layoutX="-35.0" layoutY="-31.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="334.0" prefWidth="554.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <HBox fx:id="mainMenuCenterHBox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="140.0" style="-fx-background-radius: 5px; -fx-background-color: #FC7777;" StackPane.alignment="CENTER">
+                              <HBox fx:id="mainMenuCenterHBox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#switchingToTheAnalysisStartWindowForNotButton" prefHeight="48.0" prefWidth="140.0" style="-fx-background-radius: 5px; -fx-background-color: #FC7777;" StackPane.alignment="CENTER">
                                  <children>
                                     <AnchorPane fx:id="mainMenuPlusAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="32.0">
                                        <children>
@@ -54,9 +54,9 @@
                                           <Insets left="7.0" />
                                        </HBox.margin>
                                     </AnchorPane>
-                                    <Button fx:id="mainMenuCenterButton" alignment="CENTER_RIGHT" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="92.0" style="-fx-background-color: #FC7777;" text="Выбрать изображение" textFill="WHITE" wrapText="true" HBox.hgrow="NEVER">
+                                    <Button fx:id="mainMenuCenterButton" alignment="CENTER_RIGHT" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchingToTheAnalysisStartWindowForButton" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #FC7777;" text="Выбрать изображение" textFill="WHITE" wrapText="true" HBox.hgrow="NEVER">
                                        <font>
-                                          <Font name="Arial Black" size="10.0" />
+                                          <Font name="Arial Black" size="11.0" />
                                        </font>
                                     </Button>
                                  </children>
@@ -77,7 +77,7 @@
                      <font>
                         <Font size="10.0" />
                      </font></TextField>
-                  <Button fx:id="mainMenuStartAnalysisButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="150.0" style="-fx-background-color: #F3F3F3; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-border-color: #ADA5A5; -fx-background-radius: 5px;" text="Начать анализ" textAlignment="CENTER" textFill="#ada5a5">
+                  <Button fx:id="mainMenuStartAnalysisButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="140.0" style="-fx-background-color: #F3F3F3; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-border-color: #ADA5A5; -fx-background-radius: 5px;" text="Начать анализ" textAlignment="CENTER" textFill="#ada5a5">
                      <font>
                         <Font name="Arial Black" size="10.0" />
                      </font>
@@ -100,7 +100,7 @@
                     <children>
                         <ImageView fx:id="mainMenuIconImageView" fitHeight="30.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../images/logo-pathology-warden.png" />
+                                <Image url="@../../images/logo-pathology-warden.png" />
                             </image>
                         </ImageView>
                         <Label fx:id="mainMenuNameOfProjectLabel" prefHeight="30.0" prefWidth="56.0" text="Pathology Warden " textAlignment="CENTER" textFill="WHITE" wrapText="true">
