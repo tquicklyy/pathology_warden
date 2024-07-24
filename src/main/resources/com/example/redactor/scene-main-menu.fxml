@@ -38,7 +38,7 @@
                               <ImageView fx:id="mainMenuGeneralImageView" fitHeight="459.0" fitWidth="529.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         <StackPane layoutX="-35.0" layoutY="-31.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="334.0" prefWidth="554.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <HBox fx:id="mainMenuCenterHBox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="140.0" style="-fx-background-radius: 5px; -fx-background-color: #FC7777;" StackPane.alignment="CENTER">
+                              <HBox fx:id="mainMenuCenterHBox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#switchingToTheAnalysisStartWindowForNotButton" prefHeight="48.0" prefWidth="140.0" style="-fx-background-radius: 5px; -fx-background-color: #FC7777;" StackPane.alignment="CENTER">
                                  <children>
                                     <AnchorPane fx:id="mainMenuPlusAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="32.0">
                                        <children>
@@ -54,7 +54,7 @@
                                           <Insets left="7.0" />
                                        </HBox.margin>
                                     </AnchorPane>
-                                    <Button fx:id="mainMenuCenterButton" alignment="CENTER_RIGHT" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="92.0" style="-fx-background-color: #FC7777;" text="Выбрать изображение" textFill="WHITE" wrapText="true" HBox.hgrow="NEVER">
+                                    <Button fx:id="mainMenuCenterButton" alignment="CENTER_RIGHT" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchingToTheAnalysisStartWindowForButton" prefHeight="40.0" prefWidth="92.0" style="-fx-background-color: #FC7777;" text="Выбрать изображение" textFill="WHITE" wrapText="true" HBox.hgrow="NEVER">
                                        <font>
                                           <Font name="Arial Black" size="10.0" />
                                        </font>
@@ -69,11 +69,11 @@
             </VBox>
             <VBox fx:id="mainMenuBottomVBox" alignment="CENTER" prefHeight="110.0" prefWidth="1942.0" spacing="5.0" VBox.vgrow="ALWAYS">
                <children>
-                  <TextField fx:id="mainMenuNameOfReportTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="320.0" promptText="Название отчёта" style="-fx-border-color: #FC7777; -fx-background-color: #FFFFFF; -fx-border-radius: 8px; -fx-border-width: 2px;">
+                  <TextField fx:id="mainMenuNameOfReportTextField" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="320.0" promptText="Название отчёта" style="-fx-border-color: #ADA5A5; -fx-background-color: #FFFFFF; -fx-border-radius: 8px; -fx-border-width: 2px;">
                      <font>
                         <Font size="10.0" />
                      </font></TextField>
-                  <TextField fx:id="mainMenuNameOfPatientTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="320.0" promptText="ФИО пациента" style="-fx-border-color: #FC7777; -fx-border-radius: 8px; -fx-border-width: 2px; -fx-background-color: #FFFFFF;">
+                  <TextField fx:id="mainMenuNameOfPatientTextField" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="320.0" promptText="ФИО пациента" style="-fx-border-color: #ADA5A5; -fx-border-radius: 8px; -fx-border-width: 2px; -fx-background-color: #FFFFFF;">
                      <font>
                         <Font size="10.0" />
                      </font></TextField>

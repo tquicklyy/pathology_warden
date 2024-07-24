@@ -1,11 +1,17 @@
 package com.example.redactor;
 
 import javafx.beans.value.ChangeListener;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -13,6 +19,11 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
 
 public class SceneMainMenuController {
 
@@ -69,6 +80,50 @@ public class SceneMainMenuController {
 
     @FXML
     private HBox mainMenuTopHBox;
+
+    private Stage currentStage;
+
+    @FXML
+    public void switchingToTheAnalysisStartWindowForNotButton(MouseEvent event) throws IOException {
+        currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Выберите изображение");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.png", "*.gif")
+        );
+
+        File selectedFile = fileChooser.showOpenDialog(currentStage);
+        if(selectedFile != null) {
+            Image image = new Image(selectedFile.toURI().toString());
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-without-account.fxml"));
+            Scene newScene = new Scene(fxmlLoader.load(), currentStage.getWidth(), currentStage.getHeight());
+            SceneStartAnalysisWithoutAccountController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
+            sceneStartAnalysisWithoutAccountController.getMainMenuGeneralImageView().setImage(image);
+            currentStage.setScene(newScene);
+            currentStage.show();
+        }
+    }
+
+    @FXML
+    public void switchingToTheAnalysisStartWindowForButton(ActionEvent event) throws IOException{
+        currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Выберите изображение");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.png", "*.gif")
+        );
+
+        File selectedFile = fileChooser.showOpenDialog(currentStage);
+        if(selectedFile != null) {
+            Image image = new Image(selectedFile.toURI().toString());
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-without-account.fxml"));
+            Scene newScene = new Scene(fxmlLoader.load(), currentStage.getWidth(), currentStage.getHeight());
+            SceneStartAnalysisWithoutAccountController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
+            sceneStartAnalysisWithoutAccountController.getMainMenuGeneralImageView().setImage(image);
+            currentStage.setScene(newScene);
+            currentStage.show();
+        }
+    }
 
     @FXML
     void initialize() {
