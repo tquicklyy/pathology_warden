@@ -2,275 +2,330 @@ package com.example.redactor;
 
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class SceneStartAnalysisWithoutAccountController {
 
-    @FXML
-    private BorderPane mainMenuBorderPane;
-
-    @FXML
-    private Label mainMenuCenterTopLabel;
-
-    @FXML
-    private AnchorPane mainMenuGeneralAnchorPane;
-
-    @FXML
-    private ImageView mainMenuIconImageView;
-
-    @FXML
-    private Button mainMenuInfoButton;
-
-    @FXML
-    private Button mainMenuLoginButton;
-
-    @FXML
-    private TextField mainMenuNameOfPatientTextField;
-
-    @FXML
-    private Label mainMenuNameOfProjectLabel;
-
-    @FXML
-    private TextField mainMenuNameOfReportTextField;
-
-    @FXML
-    private Button mainMenuRegisterButton;
-
-    @FXML
-    private Button mainMenuStartAnalysisButton;
-
-    @FXML
-    private HBox mainMenuTopHBox;
-
-    public ImageView getMainMenuGeneralImageView() {
-        return mainMenuGeneralImageView;
+    public BorderPane getBeforeAnalysisBorderPane() {
+        return beforeAnalysisBorderPane;
     }
 
     @FXML
-    private ImageView mainMenuGeneralImageView;
+    private BorderPane beforeAnalysisBorderPane;
+
+    @FXML
+    private Label beforeAnalysisCenterTopLabel;
+
+    public AnchorPane getBeforeAnalysisGeneralAnchorPane() {
+        return beforeAnalysisGeneralAnchorPane;
+    }
+
+    @FXML
+    private AnchorPane beforeAnalysisGeneralAnchorPane;
+
+    @FXML
+    private ImageView beforeAnalysisIconImageView;
+
+    @FXML
+    private Button beforeAnalysisInfoButton;
+
+    @FXML
+    private Button beforeAnalysisLoginButton;
+
+    @FXML
+    private TextField beforeAnalysisNameOfPatientTextField;
+
+    @FXML
+    private Label beforeAnalysisNameOfProjectLabel;
+
+    @FXML
+    private TextField beforeAnalysisNameOfReportTextField;
+
+    @FXML
+    private Button beforeAnalysisRegisterButton;
+
+    @FXML
+    private Button beforeAnalysisStartAnalysisButton;
+
+    @FXML
+    private HBox beforeAnalysisTopHBox;
+
+    public ImageView getBeforeAnalysisGeneralImageView() {
+        return beforeAnalysisGeneralImageView;
+    }
+
+    @FXML
+    private Label beforeAnalysisForPhotoSelectionLabel;
+
+    @FXML
+    private ImageView beforeAnalysisCameraForPhotoSelectionImageView;
+
+    @FXML
+    private ImageView beforeAnalysisGeneralImageView;
+
+    private Stage currentStage;
+
+    @FXML
+    public void switchingToTheMainMenu(MouseEvent event) throws IOException {
+        currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
+        Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        currentStage.setScene(newScene);
+        currentStage.show();
+
+    }
 
     @FXML
     void initialize() {
-        mainMenuGeneralAnchorPane.prefWidthProperty().bind(mainMenuBorderPane.widthProperty());
-        mainMenuGeneralImageView.fitWidthProperty().bind(mainMenuBorderPane.widthProperty());
-        mainMenuBorderPane.sceneProperty().addListener((obs, oldScene, newScene) -> {
+        beforeAnalysisBorderPane.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
                 ChangeListener<Number> sceneSizesChangeListener = (observable, oldValue, newValue) -> {
                     if(newValue.intValue() < 610) {
-                        mainMenuTopHBox.setPrefHeight(37);
-                        mainMenuTopHBox.setPrefWidth(743);
+                        beforeAnalysisTopHBox.setPrefHeight(37);
+                        beforeAnalysisTopHBox.setPrefWidth(743);
 
-                        mainMenuCenterTopLabel.setPrefHeight(13);
-                        mainMenuCenterTopLabel.setPrefWidth(320);
-                        mainMenuCenterTopLabel.setFont(Font.font("System", FontWeight.BOLD, 14));
+                        beforeAnalysisCenterTopLabel.setPrefHeight(13);
+                        beforeAnalysisCenterTopLabel.setPrefWidth(320);
+                        beforeAnalysisCenterTopLabel.setFont(Font.font("System", FontWeight.BOLD, 14));
 
-                        mainMenuGeneralAnchorPane.setPrefHeight(320);
-                        mainMenuGeneralImageView.setFitHeight(320);
+                        beforeAnalysisGeneralAnchorPane.setPrefHeight(296);
+                        beforeAnalysisGeneralImageView.setFitHeight(296);
 
-                        mainMenuIconImageView.setFitHeight(30);
-                        mainMenuIconImageView.setFitWidth(51);
+                        beforeAnalysisIconImageView.setFitHeight(30);
+                        beforeAnalysisIconImageView.setFitWidth(51);
 
-                        mainMenuInfoButton.setPrefHeight(30);
-                        mainMenuInfoButton.setPrefWidth(30);
-                        mainMenuInfoButton.setFont(Font.font("Arial", FontWeight.BOLD, 15));
+                        beforeAnalysisInfoButton.setPrefHeight(30);
+                        beforeAnalysisInfoButton.setPrefWidth(30);
+                        beforeAnalysisInfoButton.setFont(Font.font("Arial", FontWeight.BOLD, 15));
 
-                        mainMenuLoginButton.setPrefHeight(30);
-                        mainMenuLoginButton.setPrefWidth(55);
-                        mainMenuLoginButton.setFont(Font.font("Arial Black", 10));
+                        beforeAnalysisLoginButton.setPrefHeight(30);
+                        beforeAnalysisLoginButton.setPrefWidth(55);
+                        beforeAnalysisLoginButton.setFont(Font.font("Arial Black", 10));
 
-                        mainMenuRegisterButton.setPrefHeight(30);
-                        mainMenuRegisterButton.setPrefWidth(100);
-                        mainMenuRegisterButton.setFont(Font.font("Arial Black", 10));
+                        beforeAnalysisRegisterButton.setPrefHeight(30);
+                        beforeAnalysisRegisterButton.setPrefWidth(100);
+                        beforeAnalysisRegisterButton.setFont(Font.font("Arial Black", 10));
 
-                        mainMenuNameOfPatientTextField.setPrefHeight(24);
-                        mainMenuNameOfPatientTextField.setPrefWidth(320);
-                        mainMenuNameOfPatientTextField.setFont(Font.font("System", 10));
+                        beforeAnalysisNameOfPatientTextField.setPrefHeight(24);
+                        beforeAnalysisNameOfPatientTextField.setPrefWidth(320);
+                        beforeAnalysisNameOfPatientTextField.setFont(Font.font("System", 10));
 
-                        mainMenuNameOfProjectLabel.setPrefHeight(30);
-                        mainMenuNameOfProjectLabel.setPrefWidth(56);
-                        mainMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 10));
+                        beforeAnalysisNameOfProjectLabel.setPrefHeight(30);
+                        beforeAnalysisNameOfProjectLabel.setPrefWidth(56);
+                        beforeAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 10));
 
-                        mainMenuNameOfReportTextField.setPrefHeight(24);
-                        mainMenuNameOfReportTextField.setPrefWidth(320);
-                        mainMenuNameOfReportTextField.setFont(Font.font("System", 10));
+                        beforeAnalysisNameOfReportTextField.setPrefHeight(24);
+                        beforeAnalysisNameOfReportTextField.setPrefWidth(320);
+                        beforeAnalysisNameOfReportTextField.setFont(Font.font("System", 10));
 
-                        mainMenuStartAnalysisButton.setPrefHeight(24);
-                        mainMenuStartAnalysisButton.setPrefWidth(140);
-                        mainMenuStartAnalysisButton.setFont(Font.font("Arial Black", 10));
+                        beforeAnalysisStartAnalysisButton.setPrefHeight(24);
+                        beforeAnalysisStartAnalysisButton.setPrefWidth(140);
+                        beforeAnalysisStartAnalysisButton.setFont(Font.font("Arial Black", 10));
+
+                        beforeAnalysisForPhotoSelectionLabel.setPrefWidth(121);
+                        beforeAnalysisForPhotoSelectionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 11));
+
+                        beforeAnalysisCameraForPhotoSelectionImageView.setFitWidth(21);
+
                     } else if(newValue.intValue() < 720) {
-                        mainMenuTopHBox.setPrefHeight(40);
-                        mainMenuTopHBox.setPrefWidth(743);
+                        beforeAnalysisTopHBox.setPrefHeight(40);
+                        beforeAnalysisTopHBox.setPrefWidth(743);
 
-                        mainMenuCenterTopLabel.setPrefHeight(13);
-                        mainMenuCenterTopLabel.setPrefWidth(420);
-                        mainMenuCenterTopLabel.setFont(Font.font("System", FontWeight.BOLD, 15));
+                        beforeAnalysisCenterTopLabel.setPrefHeight(13);
+                        beforeAnalysisCenterTopLabel.setPrefWidth(420);
+                        beforeAnalysisCenterTopLabel.setFont(Font.font("System", FontWeight.BOLD, 15));
 
-                        mainMenuGeneralAnchorPane.setPrefHeight(420);
-                        mainMenuGeneralImageView.setFitHeight(420);
+                        beforeAnalysisGeneralAnchorPane.setPrefHeight(398);
+                        beforeAnalysisGeneralImageView.setFitHeight(398);
 
-                        mainMenuIconImageView.setFitHeight(33);
-                        mainMenuIconImageView.setFitWidth(56);
+                        beforeAnalysisIconImageView.setFitHeight(33);
+                        beforeAnalysisIconImageView.setFitWidth(56);
 
-                        mainMenuInfoButton.setPrefHeight(33);
-                        mainMenuInfoButton.setPrefWidth(33);
-                        mainMenuInfoButton.setFont(Font.font("Arial", FontWeight.BOLD, 15.5));
+                        beforeAnalysisInfoButton.setPrefHeight(33);
+                        beforeAnalysisInfoButton.setPrefWidth(33);
+                        beforeAnalysisInfoButton.setFont(Font.font("Arial", FontWeight.BOLD, 15.5));
 
-                        mainMenuLoginButton.setPrefHeight(33);
-                        mainMenuLoginButton.setPrefWidth(60);
-                        mainMenuLoginButton.setFont(Font.font("Arial Black", 10.5));
+                        beforeAnalysisLoginButton.setPrefHeight(33);
+                        beforeAnalysisLoginButton.setPrefWidth(60);
+                        beforeAnalysisLoginButton.setFont(Font.font("Arial Black", 10.5));
 
-                        mainMenuRegisterButton.setPrefHeight(33);
-                        mainMenuRegisterButton.setPrefWidth(110);
-                        mainMenuRegisterButton.setFont(Font.font("Arial Black", 10.5));
+                        beforeAnalysisRegisterButton.setPrefHeight(33);
+                        beforeAnalysisRegisterButton.setPrefWidth(110);
+                        beforeAnalysisRegisterButton.setFont(Font.font("Arial Black", 10.5));
 
-                        mainMenuNameOfPatientTextField.setPrefHeight(25);
-                        mainMenuNameOfPatientTextField.setPrefWidth(420);
-                        mainMenuNameOfPatientTextField.setFont(Font.font("System", 10.5));
+                        beforeAnalysisNameOfPatientTextField.setPrefHeight(25);
+                        beforeAnalysisNameOfPatientTextField.setPrefWidth(420);
+                        beforeAnalysisNameOfPatientTextField.setFont(Font.font("System", 10.5));
 
-                        mainMenuNameOfProjectLabel.setPrefHeight(33);
-                        mainMenuNameOfProjectLabel.setPrefWidth(61);
-                        mainMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 10.5));
+                        beforeAnalysisNameOfProjectLabel.setPrefHeight(33);
+                        beforeAnalysisNameOfProjectLabel.setPrefWidth(61);
+                        beforeAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 10.5));
 
-                        mainMenuNameOfReportTextField.setPrefHeight(25);
-                        mainMenuNameOfReportTextField.setPrefWidth(420);
-                        mainMenuNameOfReportTextField.setFont(Font.font("System", 10.5));
+                        beforeAnalysisNameOfReportTextField.setPrefHeight(25);
+                        beforeAnalysisNameOfReportTextField.setPrefWidth(420);
+                        beforeAnalysisNameOfReportTextField.setFont(Font.font("System", 10.5));
 
-                        mainMenuStartAnalysisButton.setPrefHeight(25);
-                        mainMenuStartAnalysisButton.setPrefWidth(187);
-                        mainMenuStartAnalysisButton.setFont(Font.font("Arial Black", 10.5));
+                        beforeAnalysisStartAnalysisButton.setPrefHeight(25);
+                        beforeAnalysisStartAnalysisButton.setPrefWidth(187);
+                        beforeAnalysisStartAnalysisButton.setFont(Font.font("Arial Black", 10.5));
+
+                        beforeAnalysisForPhotoSelectionLabel.setPrefWidth(127);
+                        beforeAnalysisForPhotoSelectionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 11.5));
+
+                        beforeAnalysisCameraForPhotoSelectionImageView.setFitWidth(21.5);
                     } else if(newValue.intValue() < 830) {
-                        mainMenuTopHBox.setPrefHeight(43);
-                        mainMenuTopHBox.setPrefWidth(743);
+                        beforeAnalysisTopHBox.setPrefHeight(43);
+                        beforeAnalysisTopHBox.setPrefWidth(743);
 
-                        mainMenuCenterTopLabel.setPrefHeight(13);
-                        mainMenuCenterTopLabel.setPrefWidth(520);
-                        mainMenuCenterTopLabel.setFont(Font.font("System", FontWeight.BOLD, 16));
+                        beforeAnalysisCenterTopLabel.setPrefHeight(13);
+                        beforeAnalysisCenterTopLabel.setPrefWidth(520);
+                        beforeAnalysisCenterTopLabel.setFont(Font.font("System", FontWeight.BOLD, 16));
 
-                        mainMenuGeneralAnchorPane.setPrefHeight(520);
-                        mainMenuGeneralImageView.setFitHeight(520);
+                        beforeAnalysisGeneralAnchorPane.setPrefHeight(496.8);
+                        beforeAnalysisGeneralImageView.setFitHeight(496.8);
 
-                        mainMenuIconImageView.setFitHeight(36);
-                        mainMenuIconImageView.setFitWidth(61);
+                        beforeAnalysisIconImageView.setFitHeight(36);
+                        beforeAnalysisIconImageView.setFitWidth(61);
 
-                        mainMenuInfoButton.setPrefHeight(36);
-                        mainMenuInfoButton.setPrefWidth(36);
-                        mainMenuInfoButton.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+                        beforeAnalysisInfoButton.setPrefHeight(36);
+                        beforeAnalysisInfoButton.setPrefWidth(36);
+                        beforeAnalysisInfoButton.setFont(Font.font("Arial", FontWeight.BOLD, 16));
 
-                        mainMenuLoginButton.setPrefHeight(36);
-                        mainMenuLoginButton.setPrefWidth(65);
-                        mainMenuLoginButton.setFont(Font.font("Arial Black", 11));
+                        beforeAnalysisLoginButton.setPrefHeight(36);
+                        beforeAnalysisLoginButton.setPrefWidth(65);
+                        beforeAnalysisLoginButton.setFont(Font.font("Arial Black", 11));
 
-                        mainMenuRegisterButton.setPrefHeight(36);
-                        mainMenuRegisterButton.setPrefWidth(120);
-                        mainMenuRegisterButton.setFont(Font.font("Arial Black", 11));
+                        beforeAnalysisRegisterButton.setPrefHeight(36);
+                        beforeAnalysisRegisterButton.setPrefWidth(120);
+                        beforeAnalysisRegisterButton.setFont(Font.font("Arial Black", 11));
 
-                        mainMenuNameOfPatientTextField.setPrefHeight(26);
-                        mainMenuNameOfPatientTextField.setPrefWidth(520);
-                        mainMenuNameOfPatientTextField.setFont(Font.font("System", 11));
+                        beforeAnalysisNameOfPatientTextField.setPrefHeight(26);
+                        beforeAnalysisNameOfPatientTextField.setPrefWidth(520);
+                        beforeAnalysisNameOfPatientTextField.setFont(Font.font("System", 11));
 
-                        mainMenuNameOfProjectLabel.setPrefHeight(36);
-                        mainMenuNameOfProjectLabel.setPrefWidth(67);
-                        mainMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 11));
+                        beforeAnalysisNameOfProjectLabel.setPrefHeight(36);
+                        beforeAnalysisNameOfProjectLabel.setPrefWidth(67);
+                        beforeAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 11));
 
-                        mainMenuNameOfReportTextField.setPrefHeight(26);
-                        mainMenuNameOfReportTextField.setPrefWidth(520);
-                        mainMenuNameOfReportTextField.setFont(Font.font("System", 11));
+                        beforeAnalysisNameOfReportTextField.setPrefHeight(26);
+                        beforeAnalysisNameOfReportTextField.setPrefWidth(520);
+                        beforeAnalysisNameOfReportTextField.setFont(Font.font("System", 11));
 
-                        mainMenuStartAnalysisButton.setPrefHeight(26);
-                        mainMenuStartAnalysisButton.setPrefWidth(232);
-                        mainMenuStartAnalysisButton.setFont(Font.font("Arial Black", 11));
+                        beforeAnalysisStartAnalysisButton.setPrefHeight(26);
+                        beforeAnalysisStartAnalysisButton.setPrefWidth(232);
+                        beforeAnalysisStartAnalysisButton.setFont(Font.font("Arial Black", 11));
+
+                        beforeAnalysisForPhotoSelectionLabel.setPrefWidth(132);
+                        beforeAnalysisForPhotoSelectionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 12));
+
+                        beforeAnalysisCameraForPhotoSelectionImageView.setFitWidth(22);
                     } else if (newValue.intValue() < 940) {
-                        mainMenuTopHBox.setPrefHeight(46);
-                        mainMenuTopHBox.setPrefWidth(743);
+                        beforeAnalysisTopHBox.setPrefHeight(46);
+                        beforeAnalysisTopHBox.setPrefWidth(743);
 
-                        mainMenuCenterTopLabel.setPrefHeight(13);
-                        mainMenuCenterTopLabel.setPrefWidth(625);
-                        mainMenuCenterTopLabel.setFont(Font.font("System", FontWeight.BOLD, 17));
+                        beforeAnalysisCenterTopLabel.setPrefHeight(13);
+                        beforeAnalysisCenterTopLabel.setPrefWidth(625);
+                        beforeAnalysisCenterTopLabel.setFont(Font.font("System", FontWeight.BOLD, 17));
 
-                        mainMenuGeneralAnchorPane.setPrefHeight(625);
-                        mainMenuGeneralImageView.setFitHeight(625);
+                        beforeAnalysisGeneralAnchorPane.setPrefHeight(599);
+                        beforeAnalysisGeneralImageView.setFitHeight(599);
 
-                        mainMenuIconImageView.setFitHeight(39);
-                        mainMenuIconImageView.setFitWidth(66);
+                        beforeAnalysisIconImageView.setFitHeight(39);
+                        beforeAnalysisIconImageView.setFitWidth(66);
 
-                        mainMenuInfoButton.setPrefHeight(39);
-                        mainMenuInfoButton.setPrefWidth(39);
-                        mainMenuInfoButton.setFont(Font.font("Arial", FontWeight.BOLD, 16.5));
+                        beforeAnalysisInfoButton.setPrefHeight(39);
+                        beforeAnalysisInfoButton.setPrefWidth(39);
+                        beforeAnalysisInfoButton.setFont(Font.font("Arial", FontWeight.BOLD, 16.5));
 
-                        mainMenuLoginButton.setPrefHeight(39);
-                        mainMenuLoginButton.setPrefWidth(70);
-                        mainMenuLoginButton.setFont(Font.font("Arial Black", 11.5));
+                        beforeAnalysisLoginButton.setPrefHeight(39);
+                        beforeAnalysisLoginButton.setPrefWidth(70);
+                        beforeAnalysisLoginButton.setFont(Font.font("Arial Black", 11.5));
 
-                        mainMenuRegisterButton.setPrefHeight(39);
-                        mainMenuRegisterButton.setPrefWidth(130);
-                        mainMenuRegisterButton.setFont(Font.font("Arial Black", 11.5));
+                        beforeAnalysisRegisterButton.setPrefHeight(39);
+                        beforeAnalysisRegisterButton.setPrefWidth(130);
+                        beforeAnalysisRegisterButton.setFont(Font.font("Arial Black", 11.5));
 
-                        mainMenuNameOfPatientTextField.setPrefHeight(27);
-                        mainMenuNameOfPatientTextField.setPrefWidth(625);
-                        mainMenuNameOfPatientTextField.setFont(Font.font("System", 11.5));
+                        beforeAnalysisNameOfPatientTextField.setPrefHeight(27);
+                        beforeAnalysisNameOfPatientTextField.setPrefWidth(625);
+                        beforeAnalysisNameOfPatientTextField.setFont(Font.font("System", 11.5));
 
-                        mainMenuNameOfProjectLabel.setPrefHeight(39);
-                        mainMenuNameOfProjectLabel.setPrefWidth(72);
-                        mainMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 11.5));
+                        beforeAnalysisNameOfProjectLabel.setPrefHeight(39);
+                        beforeAnalysisNameOfProjectLabel.setPrefWidth(72);
+                        beforeAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 11.5));
 
-                        mainMenuNameOfReportTextField.setPrefHeight(27);
-                        mainMenuNameOfReportTextField.setPrefWidth(625);
-                        mainMenuNameOfReportTextField.setFont(Font.font("System", 11.5));
+                        beforeAnalysisNameOfReportTextField.setPrefHeight(27);
+                        beforeAnalysisNameOfReportTextField.setPrefWidth(625);
+                        beforeAnalysisNameOfReportTextField.setFont(Font.font("System", 11.5));
 
-                        mainMenuStartAnalysisButton.setPrefHeight(27);
-                        mainMenuStartAnalysisButton.setPrefWidth(279);
-                        mainMenuStartAnalysisButton.setFont(Font.font("Arial Black", 11.5));
+                        beforeAnalysisStartAnalysisButton.setPrefHeight(27);
+                        beforeAnalysisStartAnalysisButton.setPrefWidth(279);
+                        beforeAnalysisStartAnalysisButton.setFont(Font.font("Arial Black", 11.5));
+
+                        beforeAnalysisForPhotoSelectionLabel.setPrefWidth(138);
+                        beforeAnalysisForPhotoSelectionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 12.5));
+
+                        beforeAnalysisCameraForPhotoSelectionImageView.setFitWidth(22.5);
                     } else {
-                        mainMenuTopHBox.setPrefHeight(49);
-                        mainMenuTopHBox.setPrefWidth(743);
+                        beforeAnalysisTopHBox.setPrefHeight(49);
+                        beforeAnalysisTopHBox.setPrefWidth(743);
 
-                        mainMenuCenterTopLabel.setPrefHeight(13);
-                        mainMenuCenterTopLabel.setPrefWidth(728);
-                        mainMenuCenterTopLabel.setFont(Font.font("System", FontWeight.BOLD, 18));
+                        beforeAnalysisCenterTopLabel.setPrefHeight(13);
+                        beforeAnalysisCenterTopLabel.setPrefWidth(728);
+                        beforeAnalysisCenterTopLabel.setFont(Font.font("System", FontWeight.BOLD, 18));
 
-                        mainMenuGeneralAnchorPane.setPrefHeight(728);
-                        mainMenuGeneralImageView.setFitHeight(728);
+                        beforeAnalysisGeneralAnchorPane.setPrefHeight(702.4);
+                        beforeAnalysisGeneralImageView.setFitHeight(702.4);
 
-                        mainMenuIconImageView.setFitHeight(42);
-                        mainMenuIconImageView.setFitWidth(71);
+                        beforeAnalysisIconImageView.setFitHeight(42);
+                        beforeAnalysisIconImageView.setFitWidth(71);
 
-                        mainMenuInfoButton.setPrefHeight(42);
-                        mainMenuInfoButton.setPrefWidth(42);
-                        mainMenuInfoButton.setFont(Font.font("Arial", FontWeight.BOLD, 17));
+                        beforeAnalysisInfoButton.setPrefHeight(42);
+                        beforeAnalysisInfoButton.setPrefWidth(42);
+                        beforeAnalysisInfoButton.setFont(Font.font("Arial", FontWeight.BOLD, 17));
 
-                        mainMenuLoginButton.setPrefHeight(42);
-                        mainMenuLoginButton.setPrefWidth(75);
-                        mainMenuLoginButton.setFont(Font.font("Arial Black", FontWeight.BOLD, 12));
+                        beforeAnalysisLoginButton.setPrefHeight(42);
+                        beforeAnalysisLoginButton.setPrefWidth(75);
+                        beforeAnalysisLoginButton.setFont(Font.font("Arial Black", FontWeight.BOLD, 12));
 
-                        mainMenuRegisterButton.setPrefHeight(42);
-                        mainMenuRegisterButton.setPrefWidth(142);
-                        mainMenuRegisterButton.setFont(Font.font("Arial Black", 12));
+                        beforeAnalysisRegisterButton.setPrefHeight(42);
+                        beforeAnalysisRegisterButton.setPrefWidth(142);
+                        beforeAnalysisRegisterButton.setFont(Font.font("Arial Black", 12));
 
-                        mainMenuNameOfPatientTextField.setPrefHeight(28);
-                        mainMenuNameOfPatientTextField.setPrefWidth(728);
-                        mainMenuNameOfPatientTextField.setFont(Font.font("System", 12));
+                        beforeAnalysisNameOfPatientTextField.setPrefHeight(28);
+                        beforeAnalysisNameOfPatientTextField.setPrefWidth(728);
+                        beforeAnalysisNameOfPatientTextField.setFont(Font.font("System", 12));
 
-                        mainMenuNameOfProjectLabel.setPrefHeight(42);
-                        mainMenuNameOfProjectLabel.setPrefWidth(77);
-                        mainMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 12));
+                        beforeAnalysisNameOfProjectLabel.setPrefHeight(42);
+                        beforeAnalysisNameOfProjectLabel.setPrefWidth(77);
+                        beforeAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 12));
 
-                        mainMenuNameOfReportTextField.setPrefHeight(28);
-                        mainMenuNameOfReportTextField.setPrefWidth(728);
-                        mainMenuNameOfReportTextField.setFont(Font.font("System", 12));
+                        beforeAnalysisNameOfReportTextField.setPrefHeight(28);
+                        beforeAnalysisNameOfReportTextField.setPrefWidth(728);
+                        beforeAnalysisNameOfReportTextField.setFont(Font.font("System", 12));
 
-                        mainMenuStartAnalysisButton.setPrefHeight(28);
-                        mainMenuStartAnalysisButton.setPrefWidth(325);
-                        mainMenuStartAnalysisButton.setFont(Font.font("Arial Black", 12));
+                        beforeAnalysisStartAnalysisButton.setPrefHeight(28);
+                        beforeAnalysisStartAnalysisButton.setPrefWidth(325);
+                        beforeAnalysisStartAnalysisButton.setFont(Font.font("Arial Black", 12));
+
+                        beforeAnalysisForPhotoSelectionLabel.setPrefWidth(143);
+                        beforeAnalysisForPhotoSelectionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 13));
+
+                        beforeAnalysisCameraForPhotoSelectionImageView.setFitWidth(23);
                     }
                 };
                 newScene.heightProperty().addListener(sceneSizesChangeListener);

@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -96,9 +97,11 @@ public class SceneMainMenuController {
         if(selectedFile != null) {
             Image image = new Image(selectedFile.toURI().toString());
             FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-without-account.fxml"));
-            Scene newScene = new Scene(fxmlLoader.load(), currentStage.getWidth(), currentStage.getHeight());
+            Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
             SceneStartAnalysisWithoutAccountController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
-            sceneStartAnalysisWithoutAccountController.getMainMenuGeneralImageView().setImage(image);
+            sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().setImage(image);
+            sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralAnchorPane().prefWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
+            sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().fitWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
             currentStage.setScene(newScene);
             currentStage.show();
         }
@@ -117,9 +120,11 @@ public class SceneMainMenuController {
         if(selectedFile != null) {
             Image image = new Image(selectedFile.toURI().toString());
             FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-without-account.fxml"));
-            Scene newScene = new Scene(fxmlLoader.load(), currentStage.getWidth(), currentStage.getHeight());
+            Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
             SceneStartAnalysisWithoutAccountController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
-            sceneStartAnalysisWithoutAccountController.getMainMenuGeneralImageView().setImage(image);
+            sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().setImage(image);
+            sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralAnchorPane().prefWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
+            sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().fitWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
             currentStage.setScene(newScene);
             currentStage.show();
         }
