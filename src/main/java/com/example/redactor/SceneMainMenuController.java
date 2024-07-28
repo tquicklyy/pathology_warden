@@ -113,7 +113,7 @@ public class SceneMainMenuController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Выберите изображение");
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.png", "*.gif")
+                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.png")
         );
 
         File selectedFile = fileChooser.showOpenDialog(currentStage);

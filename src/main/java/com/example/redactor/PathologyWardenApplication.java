@@ -25,7 +25,6 @@ public class PathologyWardenApplication extends Application {
 
         mainMenuStage.setMinWidth(MIN_WIDTH_STAGE);
         mainMenuStage.setMinHeight(MIN_HEIGHT_STAGE);
-        mainMenuStage.setMaxWidth(1920);
         mainMenuStage.setMaxHeight(1080);
 
         mainMenuStage.getIcons().add(new Image("file:./src/main/resources/images/logo-pathology-warden.png"));

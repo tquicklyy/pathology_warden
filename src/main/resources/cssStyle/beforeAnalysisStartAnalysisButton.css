@@ -1,0 +1,21 @@
+.gray{
+-fx-background-color: #F3F3F3;
+-fx-border-width:  2px;
+-fx-border-radius:  5px;
+-fx-border-color:  #ADA5A5;
+-fx-background-radius:  5px;
+-fx-text-fill: #ADA5A5;
+-fx-alignment: center;
+-fx-text-alignment: center;
+}
+
+.red{
+-fx-background-color: #FC7777;
+-fx-border-width:  2px;
+-fx-border-radius:  5px;
+-fx-border-color: #FC7777;
+-fx-background-radius:  5px;
+-fx-text-fill: #FFFFFF;
+-fx-alignment: center;
+-fx-text-alignment: center;
+}

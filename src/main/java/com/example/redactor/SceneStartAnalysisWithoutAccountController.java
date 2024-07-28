@@ -3,6 +3,7 @@ package com.example.redactor;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -81,13 +82,25 @@ public class SceneStartAnalysisWithoutAccountController {
     private Stage currentStage;
 
     @FXML
-    public void switchingToTheMainMenu(MouseEvent event) throws IOException {
+    private void switchingToTheMainMenu(MouseEvent event) throws IOException {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
         Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
         currentStage.show();
 
+    }
+
+    private void changingTheAnalysisStartButton() {
+        if(beforeAnalysisNameOfReportTextField.getText().isEmpty() || beforeAnalysisNameOfPatientTextField.getText().isEmpty()) {
+            beforeAnalysisStartAnalysisButton.getStyleClass().clear();
+            beforeAnalysisStartAnalysisButton.getStyleClass().add("gray");
+            beforeAnalysisStartAnalysisButton.setCursor(Cursor.DEFAULT);
+        } else {
+            beforeAnalysisStartAnalysisButton.getStyleClass().clear();
+            beforeAnalysisStartAnalysisButton.getStyleClass().add("red");
+            beforeAnalysisStartAnalysisButton.setCursor(Cursor.HAND);
+        }
     }
 
     @FXML
@@ -329,6 +342,13 @@ public class SceneStartAnalysisWithoutAccountController {
                     }
                 };
                 newScene.heightProperty().addListener(sceneSizesChangeListener);
+
+                ChangeListener<String> textFieldsTextChangers = (observable, oldValue, newValue) -> {
+                    changingTheAnalysisStartButton();
+                };
+
+                beforeAnalysisNameOfPatientTextField.textProperty().addListener(textFieldsTextChangers);
+                beforeAnalysisNameOfReportTextField.textProperty().addListener(textFieldsTextChangers);
             }
         });
 
