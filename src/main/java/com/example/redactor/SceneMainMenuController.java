@@ -311,7 +311,6 @@ public class SceneMainMenuController {
                         mainMenuPlusVLine.setEndX(26);
                         mainMenuPlusVLine.setStrokeWidth(3);
 
-
                         mainMenuPlusHLine.setEndY(26);
                         mainMenuPlusHLine.setStrokeWidth(3);
 
@@ -325,8 +324,8 @@ public class SceneMainMenuController {
                         mainMenuTopHBox.setPrefHeight(46);
                         mainMenuTopHBox.setPrefWidth(743);
 
-                        mainMenuPlusAnchorPane.setPrefHeight(50);
-                        mainMenuPlusAnchorPane.setPrefWidth(50);
+                        mainMenuPlusAnchorPane.setPrefHeight(52);
+                        mainMenuPlusAnchorPane.setPrefWidth(52);
 
                         mainMenuCenterTopLabel.setPrefHeight(13);
                         mainMenuCenterTopLabel.setPrefWidth(625);
