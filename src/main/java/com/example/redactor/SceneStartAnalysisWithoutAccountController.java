@@ -5,11 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -17,8 +17,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class SceneStartAnalysisWithoutAccountController {
@@ -89,13 +91,7 @@ public class SceneStartAnalysisWithoutAccountController {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
         Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
-        System.out.println(currentStage.getScene().getWidth());
-        System.out.println(newScene.getWidth());
-        System.out.println(currentStage.getScene().getWidth());
         currentStage.setScene(newScene);
-        currentStage.show();
-        System.out.println(newScene.getWidth());
-        System.out.println(currentStage.getScene().getWidth());
     }
 
     private void changingTheAnalysisStartButton() {
@@ -109,6 +105,19 @@ public class SceneStartAnalysisWithoutAccountController {
             beforeAnalysisStartAnalysisButton.getStyleClass().add("red");
             beforeAnalysisStartAnalysisButton.setCursor(Cursor.HAND);
             isBeforeAnalysisStartAnalysisButtonRed = true;
+        }
+    }
+
+    @FXML
+    private void selectNewImage() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Выберите изображение");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.png")
+        );
+        File selectedFile = fileChooser.showOpenDialog(currentStage);
+        if(selectedFile != null) {
+            beforeAnalysisGeneralImageView.setImage(new Image(selectedFile.toURI().toString()));
         }
     }
 
@@ -129,7 +138,6 @@ public class SceneStartAnalysisWithoutAccountController {
             sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView().fitWidthProperty().bind(sceneEndAnalysisWithoutAccountController.getEndAnalysisBorderPane().widthProperty());
 
             currentStage.setScene(newScene);
-            currentStage.show();
         }
     }
 
@@ -373,9 +381,7 @@ public class SceneStartAnalysisWithoutAccountController {
                 };
                 newScene.heightProperty().addListener(sceneSizesChangeListener);
 
-                ChangeListener<String> textFieldsTextChangers = (observable, oldValue, newValue) -> {
-                    changingTheAnalysisStartButton();
-                };
+                ChangeListener<String> textFieldsTextChangers = (observable, oldValue, newValue) -> changingTheAnalysisStartButton();
 
                 beforeAnalysisNameOfPatientTextField.textProperty().addListener(textFieldsTextChangers);
                 beforeAnalysisNameOfReportTextField.textProperty().addListener(textFieldsTextChangers);

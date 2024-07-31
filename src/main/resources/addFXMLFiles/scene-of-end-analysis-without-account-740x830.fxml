@@ -33,9 +33,9 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="1000.0" prefWidth="1920.0" VBox.vgrow="ALWAYS">
                <children>
-                      <AnchorPane fx:id="mainMenuGeneralAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="625.0" VBox.vgrow="ALWAYS">
+                      <AnchorPane fx:id="mainMenuGeneralAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="599.0" VBox.vgrow="ALWAYS">
                           <children>
-                              <ImageView fx:id="mainMenuGeneralImageView" fitHeight="459.0" fitWidth="529.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <ImageView fx:id="mainMenuGeneralImageView" fitHeight="599.0" fitWidth="599.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         <StackPane layoutX="-35.0" layoutY="-31.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="334.0" prefWidth="554.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                           </children>
                       </AnchorPane>

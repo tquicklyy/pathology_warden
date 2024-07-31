@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 public class PathologyWardenApplication extends Application {
     public static final double MIN_WIDTH_STAGE = 765;
     public static final double MIN_HEIGHT_STAGE = 540;

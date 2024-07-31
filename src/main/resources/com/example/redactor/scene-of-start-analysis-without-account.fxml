@@ -47,7 +47,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="54.0" prefWidth="743.0" spacing="2.0">
                      <children>
-                        <Label fx:id="beforeAnalysisForPhotoSelectionLabel" alignment="CENTER" onMouseClicked="#switchingToTheMainMenu" prefHeight="20.0" prefWidth="121.0" text="Выбрать другое фото" textAlignment="CENTER" underline="true">
+                        <Label fx:id="beforeAnalysisForPhotoSelectionLabel" alignment="CENTER" onMouseClicked="#selectNewImage" prefHeight="20.0" prefWidth="121.0" text="Выбрать другое фото" textAlignment="CENTER" underline="true">
                            <font>
                               <Font name="Arial Bold" size="11.0" />
                            </font>
@@ -55,7 +55,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <ImageView fx:id="beforeAnalysisCameraForPhotoSelectionImageView" fitHeight="25.0" fitWidth="21.0" onMouseClicked="#switchingToTheMainMenu" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="beforeAnalysisCameraForPhotoSelectionImageView" fitHeight="25.0" fitWidth="21.0" onMouseClicked="#selectNewImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/camera-for-photo-selection.png" />
                            </image>

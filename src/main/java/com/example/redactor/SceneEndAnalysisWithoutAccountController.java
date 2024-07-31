@@ -2,14 +2,12 @@ package com.example.redactor;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -23,10 +21,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -119,9 +117,6 @@ public class SceneEndAnalysisWithoutAccountController {
     @FXML
     private HBox EndAnalysisTopHBox;
 
-    @FXML
-    private VBox EndAnalysisTopLabelVBox;
-
     private Stage currentStage;
 
     private boolean isEndAnalysisEditAnchorPaneClosed = true;
@@ -140,7 +135,28 @@ public class SceneEndAnalysisWithoutAccountController {
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
         Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
-        currentStage.show();
+    }
+
+    @FXML
+    public void startNewAnalysis(ActionEvent event) throws IOException{
+        currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Выберите изображение");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.png")
+        );
+
+        File selectedFile = fileChooser.showOpenDialog(currentStage);
+        if(selectedFile != null) {
+            Image image = new Image(selectedFile.toURI().toString());
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-without-account.fxml"));
+            Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+            SceneStartAnalysisWithoutAccountController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
+            sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().setImage(image);
+            sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralAnchorPane().prefWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
+            sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().fitWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
+            currentStage.setScene(newScene);
+        }
     }
 
     @FXML
@@ -483,8 +499,8 @@ public class SceneEndAnalysisWithoutAccountController {
                         EndAnalysisStartAnalysisButton.setPrefWidth(180);
                         EndAnalysisStartAnalysisButton.setFont(Font.font("Arial Black", 11));
                     } else if (newValue.intValue() < 940) {
-                        EndAnalysisGeneralAnchorPane.setPrefHeight(625);
-                        EndAnalysisGeneralImageView.setFitHeight(625);
+                        EndAnalysisGeneralAnchorPane.setPrefHeight(599);
+                        EndAnalysisGeneralImageView.setFitHeight(599);
 
                         EndAnalysisTopHBox.setPrefHeight(46);
                         EndAnalysisTopHBox.setPrefWidth(743);
