@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -81,14 +82,20 @@ public class SceneStartAnalysisWithoutAccountController {
 
     private Stage currentStage;
 
+    private boolean isBeforeAnalysisStartAnalysisButtonRed = false;
+
     @FXML
     private void switchingToTheMainMenu(MouseEvent event) throws IOException {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
         Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        System.out.println(currentStage.getScene().getWidth());
+        System.out.println(newScene.getWidth());
+        System.out.println(currentStage.getScene().getWidth());
         currentStage.setScene(newScene);
         currentStage.show();
-
+        System.out.println(newScene.getWidth());
+        System.out.println(currentStage.getScene().getWidth());
     }
 
     private void changingTheAnalysisStartButton() {
@@ -96,10 +103,33 @@ public class SceneStartAnalysisWithoutAccountController {
             beforeAnalysisStartAnalysisButton.getStyleClass().clear();
             beforeAnalysisStartAnalysisButton.getStyleClass().add("gray");
             beforeAnalysisStartAnalysisButton.setCursor(Cursor.DEFAULT);
+            isBeforeAnalysisStartAnalysisButtonRed = false;
         } else {
             beforeAnalysisStartAnalysisButton.getStyleClass().clear();
             beforeAnalysisStartAnalysisButton.getStyleClass().add("red");
             beforeAnalysisStartAnalysisButton.setCursor(Cursor.HAND);
+            isBeforeAnalysisStartAnalysisButtonRed = true;
+        }
+    }
+
+    @FXML
+    private void startAnalysis(MouseEvent event) throws IOException {
+        if(isBeforeAnalysisStartAnalysisButtonRed) {
+            currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-end-analysis-without-account.fxml"));
+            Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+
+            SceneEndAnalysisWithoutAccountController sceneEndAnalysisWithoutAccountController = fxmlLoader.getController();
+            sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView().setImage(beforeAnalysisGeneralImageView.getImage());
+
+            sceneEndAnalysisWithoutAccountController.getEndAnalysisNameOfReportLabel().setText(beforeAnalysisNameOfReportTextField.getText());
+            sceneEndAnalysisWithoutAccountController.getEndAnalysisNameOfPatientLabel().setText(beforeAnalysisNameOfPatientTextField.getText());
+
+            sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralAnchorPane().prefWidthProperty().bind(sceneEndAnalysisWithoutAccountController.getEndAnalysisBorderPane().widthProperty());
+            sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView().fitWidthProperty().bind(sceneEndAnalysisWithoutAccountController.getEndAnalysisBorderPane().widthProperty());
+
+            currentStage.setScene(newScene);
+            currentStage.show();
         }
     }
 

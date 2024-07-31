@@ -47,7 +47,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="54.0" prefWidth="743.0" spacing="2.0">
                      <children>
-                        <Label fx:id="beforeAnalysisForPhotoSelectionLabel" alignment="CENTER" prefHeight="20.0" prefWidth="121.0" text="Выбрать другое фото" textAlignment="CENTER" underline="true">
+                        <Label fx:id="beforeAnalysisForPhotoSelectionLabel" alignment="CENTER" onMouseClicked="#switchingToTheMainMenu" prefHeight="20.0" prefWidth="121.0" text="Выбрать другое фото" textAlignment="CENTER" underline="true">
                            <font>
                               <Font name="Arial Bold" size="11.0" />
                            </font>
@@ -55,7 +55,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <ImageView fx:id="beforeAnalysisCameraForPhotoSelectionImageView" fitHeight="25.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="beforeAnalysisCameraForPhotoSelectionImageView" fitHeight="25.0" fitWidth="21.0" onMouseClicked="#switchingToTheMainMenu" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/camera-for-photo-selection.png" />
                            </image>
@@ -79,7 +79,7 @@
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor></TextField>
-                  <Button fx:id="beforeAnalysisStartAnalysisButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="150.0" styleClass="gray" stylesheets="@../../../cssStyle/beforeAnalysisStartAnalysisButton.css" text="Начать анализ" textAlignment="CENTER" textFill="#ada5a5">
+                  <Button fx:id="beforeAnalysisStartAnalysisButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#startAnalysis" prefHeight="24.0" prefWidth="150.0" styleClass="gray" stylesheets="@../../../cssStyle/beforeAnalysisStartAnalysisButton.css" text="Начать анализ" textAlignment="CENTER" textFill="#ada5a5">
                      <font>
                         <Font name="Arial Black" size="10.0" />
                      </font>
