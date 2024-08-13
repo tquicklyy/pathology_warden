@@ -129,6 +129,14 @@ public class SceneMainMenuController {
     }
 
     @FXML
+    private void switchingToTheInformationWindow(ActionEvent event) throws IOException {
+        currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-information-about-program.fxml"));
+        Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        currentStage.setScene(newScene);
+    }
+
+    @FXML
     void initialize() {
         mainMenuBorderPane.heightProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.intValue() < 610) {
@@ -247,7 +255,6 @@ public class SceneMainMenuController {
 
                 mainMenuPlusVLine.setEndX(22);
                 mainMenuPlusVLine.setStrokeWidth(2.5);
-
 
                 mainMenuPlusHLine.setEndY(22);
                 mainMenuPlusHLine.setStrokeWidth(2.5);

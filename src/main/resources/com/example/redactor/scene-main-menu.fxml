@@ -165,7 +165,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </Button>
-                        <Button fx:id="mainMenuInfoButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #FC7777; -fx-border-radius: 100; -fx-border-width: 2px; -fx-border-color: #FFFFFF;" text="i" textFill="WHITE">
+                        <Button fx:id="mainMenuInfoButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchingToTheInformationWindow" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #FC7777; -fx-border-radius: 100; -fx-border-width: 2px; -fx-border-color: #FFFFFF;" text="i" textFill="WHITE">
                             <font>
                                 <Font name="Arial Bold" size="15.0" />
                             </font>

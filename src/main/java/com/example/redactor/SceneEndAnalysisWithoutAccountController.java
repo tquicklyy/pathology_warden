@@ -140,6 +140,14 @@ public class SceneEndAnalysisWithoutAccountController {
     }
 
     @FXML
+    private void switchingToTheInformationWindow(ActionEvent event) throws IOException {
+        currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-information-about-program.fxml"));
+        Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        currentStage.setScene(newScene);
+    }
+
+    @FXML
     public void startNewAnalysis(ActionEvent event) throws IOException{
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
