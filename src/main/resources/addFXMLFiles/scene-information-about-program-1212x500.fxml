@@ -13,86 +13,89 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<BorderPane fx:id="infoMenuBorderPane" prefHeight="500.0" prefWidth="1212.0" styleClass="root" stylesheets="@../../../cssStyle/mainMenuBorderPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.redactor.SceneInformationAboutProgramController">
+<BorderPane fx:id="infoMenuBorderPane" prefHeight="500.0" prefWidth="1212.0" styleClass="root" stylesheets="@../cssStyle/mainMenuBorderPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.redactor.SceneInformationAboutProgramController">
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
             <children>
-            <VBox fx:id="infoMenuCenterColoredVBox" alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="962.0" style="-fx-background-color: #FDE5E5;" VBox.vgrow="ALWAYS">
+            <VBox fx:id="infoMenuCenterColoredVBox" alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="673.0" style="-fx-background-color: #FDE5E5;" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox alignment="CENTER" prefHeight="25.0" prefWidth="490.0">
+                  <VBox fx:id="infoMenuFirstUpVBox" alignment="CENTER" prefHeight="25.0" prefWidth="490.0">
                      <children>
-                        <Label fx:id="infoMenuFirstUpLabel" alignment="CENTER" prefWidth="962.0" text="Что такое Pathology Warden?">
+                        <Label fx:id="infoMenuFirstUpLabel" alignment="CENTER" prefWidth="490.0" text="Что такое Pathology Warden?">
                            <font>
-                              <Font name="System Bold" size="17.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
                      </children>
                      <VBox.margin>
-                        <Insets top="5.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="98.0" prefWidth="490.0">
+                  <VBox fx:id="infoMenuSecondUpVBox" alignment="TOP_CENTER" prefHeight="105.0" prefWidth="474.0" spacing="5.0">
                      <children>
-                        <Label fx:id="infoMenuSecondUpLabel" alignment="TOP_CENTER" prefHeight="54.0" prefWidth="950.0" text="Pathology Warden - это удобная программа для анализа снимков сердца. Встроенная нейросеть умеет выявлять наличие патологий, определять точные параметры сердца и его разделов." textAlignment="JUSTIFY" wrapText="true">
+                        <Label fx:id="infoMenuSecondUpLabel" prefHeight="48.0" prefWidth="622.0" text="Pathology Warden - это удобная программа для анализа снимков сердца. Встроенная нейросеть умеет выявлять наличие патологий, определять точные параметры сердца и его разделов." textAlignment="JUSTIFY" wrapText="true">
                            <font>
-                              <Font size="13.0" />
+                              <Font size="14.0" />
                            </font></Label>
-                        <TextFlow fx:id="infoMenuTextFlow" maxWidth="-Infinity" prefHeight="48.0" prefWidth="950.0" textAlignment="JUSTIFY">
+                        <TextFlow fx:id="infoMenuTextFlow" maxWidth="-Infinity" prefHeight="48.0" prefWidth="622.0" textAlignment="JUSTIFY">
                            <children>
                               <Text fx:id="infoMenuFirstText" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Pathology Warden призван">
                                  <font>
-                                    <Font size="13.0" />
+                                    <Font size="14.0" />
                                  </font></Text>
                               <Text fx:id="infoMenuSecondText" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text=" помочь">
                                  <font>
-                                    <Font name="System Bold" size="13.0" />
+                                    <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="infoMenuThirdText" strokeType="OUTSIDE" strokeWidth="0.0" text=" профильным специалистам провести корректные исследования снимков сердца, но">
+                              <Text fx:id="infoMenuThirdText" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text=" профильным специалистам провести корректные исследования снимков сердца, но">
                                  <font>
-                                    <Font size="13.0" />
+                                    <Font size="14.0" />
                                  </font></Text>
                               <Text fx:id="infoMenuFourthText" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text=" не выполнять">
                                  <font>
-                                    <Font name="System Bold" size="13.0" />
+                                    <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="infoMenuFifthText" strokeType="OUTSIDE" strokeWidth="0.0" text=" их самостоятельно.">
+                              <Text fx:id="infoMenuFifthText" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text=" их самостоятельно.">
                                  <font>
-                                    <Font size="13.0" />
+                                    <Font size="14.0" />
                                  </font></Text>
                            </children>
                         </TextFlow>
                      </children>
                      <VBox.margin>
-                        <Insets top="5.0" />
+                        <Insets />
                      </VBox.margin>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="25.0" prefWidth="490.0">
+                  <VBox fx:id="infoMenuFirstCenterVBox" alignment="CENTER" prefHeight="25.0" prefWidth="490.0">
                      <children>
-                        <Label fx:id="infoMenuFirstCenterLabel" alignment="CENTER" prefHeight="80.0" prefWidth="962.0" text="Как использовать Pathology Warden?">
+                        <Label fx:id="infoMenuFirstCenterLabel" alignment="CENTER" prefHeight="80.0" prefWidth="490.0" text="Как использовать Pathology Warden?">
                            <font>
-                              <Font name="System Bold" size="17.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </Label>
                      </children>
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="274.0" prefWidth="490.0" spacing="5.0">
+                  <VBox fx:id="infoMenuSecondCenterVBox" alignment="TOP_CENTER" prefHeight="274.0" prefWidth="490.0" spacing="5.0">
                      <children>
-                        <Label fx:id="infoMenuSecondCenterLabel" prefHeight="72.0" prefWidth="950.0" text="Вам необходимо загрузить фотографию снимка сердца с Вашего устройства, нажав на “Выбрать изображение”. Далее Вы можете выбрать настройки анализа или воспользоваться настройками по умолчанию (ничего не менять). Всё остальное программа сделает за Вас!" textAlignment="JUSTIFY" wrapText="true">
+                        <Label fx:id="infoMenuSecondCenterLabel" prefHeight="72.0" prefWidth="622.0" text="Вам необходимо загрузить фотографию снимка сердца с Вашего устройства, нажав на “Выбрать изображение”. Далее Вы можете выбрать настройки анализа или воспользоваться настройками по умолчанию (ничего не менять). Всё остальное программа сделает за Вас!" textAlignment="JUSTIFY" wrapText="true">
                            <font>
-                              <Font size="13.0" />
+                              <Font size="14.0" />
                            </font></Label>
-                        <Label fx:id="infoMenuThirdCenterLabel" prefHeight="103.0" prefWidth="950.0" text="В конце Вы получите сегментированный снимок сердца и текст, в котором будет подробно отражена вся выбранная Вами информация: наличие патологий, точные параметры сердца и прочее. Вы можете скачать обработанный снимок или текст анализа в формате текстового файла (.txt) на Ваше устройство. Если ранее Вы вошли в систему или зарегистрировались, то результаты анализа можно сохранить также и на Ваш аккаунт." textAlignment="JUSTIFY" wrapText="true">
+                        <Label fx:id="infoMenuThirdCenterLabel" prefHeight="103.0" prefWidth="622.0" text="В конце Вы получите сегментированный снимок сердца и текст, в котором будет подробно отражена вся выбранная Вами информация: наличие патологий, точные параметры сердца и прочее. Вы можете скачать обработанный снимок или текст анализа в формате текстового файла (.txt) на Ваше устройство. Если ранее Вы вошли в систему или зарегистрировались, то результаты анализа можно сохранить также и на Ваш аккаунт." textAlignment="JUSTIFY" wrapText="true">
                            <font>
-                              <Font size="13.0" />
+                              <Font size="14.0" />
                            </font></Label>
-                        <Label fx:id="infoMenuFourthCenterLabel" prefHeight="72.0" prefWidth="950.0" text="Для анализа снимка программа использует так называемые ориентиры, которые устанавливает автоматически. Если Вас не устроил результат исследования, Вы можете вручную обозначить ориентиры в необходимом месте с помощью удобного конструктора. Далее просто запустите программу ещё раз и она сделает своё дело!" textAlignment="JUSTIFY" wrapText="true">
+                        <Label fx:id="infoMenuFourthCenterLabel" prefHeight="85.0" prefWidth="622.0" text="Для анализа снимка программа использует так называемые ориентиры, которые устанавливает автоматически. Если Вас не устроил результат исследования, Вы можете вручную обозначить ориентиры в необходимом месте с помощью удобного конструктора. Далее просто запустите программу ещё раз и она сделает своё дело!" textAlignment="JUSTIFY" wrapText="true">
                            <font>
-                              <Font size="13.0" />
+                              <Font size="14.0" />
                            </font></Label>
                      </children>
                   </VBox>
@@ -111,7 +114,7 @@
                     <children>
                         <ImageView fx:id="infoMenuIconImageView" fitHeight="30.0" fitWidth="51.0" onMouseClicked="#switchingToTheMainMenuForNotButton" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../images/logo-pathology-warden.png" />
+                                <Image url="@../images/logo-pathology-warden.png" />
                             </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
