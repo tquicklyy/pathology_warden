@@ -15,6 +15,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
@@ -22,8 +24,12 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SceneStartAnalysisWithoutAccountController {
+    private double x;
+    private double y;
 
     public BorderPane getBeforeAnalysisBorderPane() {
         return beforeAnalysisBorderPane;
@@ -146,7 +152,34 @@ public class SceneStartAnalysisWithoutAccountController {
             sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView().fitWidthProperty().bind(sceneEndAnalysisWithoutAccountController.getEndAnalysisBorderPane().widthProperty());
 
             currentStage.setScene(newScene);
+            List<Circle> points = new ArrayList<>();
+            createPoints(points,20,sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView());
+            sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralAnchorPane().getChildren().addAll(points);
         }
+    }
+    private void createPoints(List<Circle> points,int numPoints,ImageView view) {
+
+        var bounds = view.getBoundsInLocal();
+        this.x  = bounds.getWidth();
+        this.y  = bounds.getHeight();
+
+        points.add(createPoint(view, 0, 0));
+        points.add(createPoint(view, x, 0));
+        points.add(createPoint(view, x, y));
+        points.add(createPoint(view, 0,y));
+
+        for(int i=0;i<numPoints;i++) {
+            points.add(createPoint(view, Math.random()*101, Math.random()*101));
+        }
+    }
+    private Circle createPoint(ImageView view, double x1, double y1) {
+        var sceneCoordinates = view.localToParent(x1, y1);
+        Circle point = new Circle(sceneCoordinates.getX(), sceneCoordinates.getY(), 5);
+        point.setFill(Color.RED);
+        return point;
+    }
+    private boolean isBad(double x1,double y1){
+        return x1>x||x1<0||y1<0||y1>y;
     }
 
     @FXML
