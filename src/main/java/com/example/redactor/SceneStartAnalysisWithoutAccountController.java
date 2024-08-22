@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SceneStartAnalysisWithoutAccountController {
+    private List<Circle>pointsList = new ArrayList<>();
+    private List<Line>linesList = new ArrayList<>();
     private double x;
     private double y;
 
@@ -153,22 +155,24 @@ public class SceneStartAnalysisWithoutAccountController {
             sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView().fitWidthProperty().bind(sceneEndAnalysisWithoutAccountController.getEndAnalysisBorderPane().widthProperty());
 
             currentStage.setScene(newScene);
-            List<Circle> points = new ArrayList<>();
-            List<Line> lines = new ArrayList<>();
-            createPoints(points,20,sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView());
-            createLines(points,lines);
-            sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralAnchorPane().getChildren().addAll(points);
-            sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralAnchorPane().getChildren().addAll(lines);
+            createPoints(pointsList,5,sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView());
+            createLines(pointsList,linesList);
+            for (Circle point : pointsList) {
+                point.setOnMouseDragged(ev->handlePointDrag(ev,sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView()));
+            }
+            sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralAnchorPane().getChildren().addAll(pointsList);
+            sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralAnchorPane().getChildren().addAll(linesList);
         }
     }
     private void createPoints(List<Circle> points,int numPoints,ImageView view) {
         var bounds = view.getBoundsInLocal();
         this.x  = bounds.getWidth();
         this.y  = bounds.getHeight();
-        points.add(createPoint(view, 0, 0));
-        points.add(createPoint(view, x, 0));
-        points.add(createPoint(view, x, y));
-        points.add(createPoint(view, 0,y));
+        //по углам
+//        points.add(createPoint(view, 0, 0));
+//        points.add(createPoint(view, x, 0));
+//        points.add(createPoint(view, x, y));
+//        points.add(createPoint(view, 0,y));
         for(int i=0;i<numPoints;i++) {
             points.add(createPoint(view, Math.random()*101, Math.random()*101));
         }
@@ -189,8 +193,45 @@ public class SceneStartAnalysisWithoutAccountController {
             line.setStroke(Color.RED);
         }
     }
-    private boolean isBad(double x1,double y1){
-        return x1>x||x1<0||y1<0||y1>y;
+    private void handlePointDrag(MouseEvent event, ImageView view) {
+        Circle point = (Circle) event.getSource();
+
+        // Получаем координаты точки относительно изображения
+        double x1 = event.getX();
+        double y1 = event.getY();
+
+        // Получаем координаты точки относительно сцены
+        var sceneCoordinates = view.localToParent(x1, y1);
+
+        // Получаем смещение от предыдущего положения
+        double xOffset = sceneCoordinates.getX() - point.getCenterX();
+        double yOffset = sceneCoordinates.getY() - point.getCenterY();
+
+        // Преобразуем координаты точки в координаты ImageView
+        var imageViewCoordinates = view.parentToLocal(sceneCoordinates.getX(), sceneCoordinates.getY());
+
+        // Проверяем, находится ли точка в пределах изображения
+        if (imageViewCoordinates.getX() >= 0 && imageViewCoordinates.getX() <= x &&
+                imageViewCoordinates.getY() >= 0 && imageViewCoordinates.getY() <= y) {
+            // Устанавливаем новые координаты точки, учитывая смещение
+            point.setCenterX(point.getCenterX() + xOffset);
+            point.setCenterY(point.getCenterY() + yOffset);
+        }
+
+        // Обновляем линии после перемещения
+        updateLines(pointsList, linesList);
+    }
+
+    // Метод для обновления позиций линий
+    private void updateLines(List<Circle> points, List<Line> lines) {
+        // Обновляем каждую линию, соединяющую пары точек
+        for (int i = 0; i < lines.size(); i++) {
+            Line line = lines.get(i);
+            line.setStartX(points.get(i).getCenterX());
+            line.setStartY(points.get(i).getCenterY());
+            line.setEndX(points.get((i + 1) % points.size()).getCenterX()); // Циклический сдвиг
+            line.setEndY(points.get((i + 1) % points.size()).getCenterY());
+        }
     }
 
     @FXML
