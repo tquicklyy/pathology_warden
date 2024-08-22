@@ -79,7 +79,7 @@
                      <children>
                         <TextFlow fx:id="infoMenuSecondCenterTextFlow" maxWidth="-Infinity" prefHeight="72.0" prefWidth="439.0" textAlignment="JUSTIFY">
                            <children>
-                              <Text fx:id="infoMenuSecondCenterText" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Вам необходимо загрузить фотографию снимка сердца с вашего устройства, нажав на “Выбрать изображение”. Далее вы можете выбрать настройки анализа или воспользоваться настройками по умолчанию (ничего не менять). Всё остальное программа сделает за вас!" />
+                              <Text fx:id="infoMenuSecondCenterText" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Вам необходимо загрузить фотографию снимка сердца с вашего устройства, нажав на «Выбрать изображение». Далее вы можете выбрать настройки анализа или воспользоваться настройками по умолчанию (ничего не менять). Всё остальное программа сделает за вас!" />
                            </children>
                         </TextFlow>
                         <TextFlow fx:id="infoMenuThirdCenterTextFlow" maxWidth="-Infinity" prefHeight="103.0" prefWidth="439.0" textAlignment="JUSTIFY">
