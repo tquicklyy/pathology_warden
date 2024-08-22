@@ -217,7 +217,6 @@ public class SceneStartAnalysisWithoutAccountController {
             point.setCenterX(point.getCenterX() + xOffset);
             point.setCenterY(point.getCenterY() + yOffset);
         }
-
         // Обновляем линии после перемещения
         updateLines(pointsList, linesList);
     }
