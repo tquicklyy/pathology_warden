@@ -29,8 +29,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SceneStartAnalysisWithoutAccountController {
-    private List<Circle>pointsList = new ArrayList<>();
-    private List<Line>linesList = new ArrayList<>();
+    private final List<List<Circle>> pointsList = new ArrayList<>();
+    private final List<List<Line>> linesList = new ArrayList<>(); // Список списков для хранения линий
+    private final int[] numPointsPerArea = {4, 5, 3, 3, 3}; // Количество точек для каждой области
+    private final int numAreas = numPointsPerArea.length; // Количество областей
     private double x;
     private double y;
 
@@ -155,16 +157,18 @@ public class SceneStartAnalysisWithoutAccountController {
             sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView().fitWidthProperty().bind(sceneEndAnalysisWithoutAccountController.getEndAnalysisBorderPane().widthProperty());
 
             currentStage.setScene(newScene);
-            createPoints(pointsList,5,sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView());
-            createLines(pointsList,linesList);
-            for (Circle point : pointsList) {
-                point.setOnMouseDragged(ev->handlePointDrag(ev,sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView()));
+            createAreas(sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView());
+            for (int i = 0; i < numAreas; i++) {
+                for (Circle point : pointsList.get(i)) {
+                    int finalI = i;
+                    point.setOnMouseDragged(ev -> handlePointDrag(ev, sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView(),finalI));
+                }
             }
-            sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralAnchorPane().getChildren().addAll(pointsList);
-            sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralAnchorPane().getChildren().addAll(linesList);
+            pointsList.forEach(el->sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralAnchorPane().getChildren().addAll(el));
+            linesList.forEach(el->sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralAnchorPane().getChildren().addAll(el));
         }
     }
-    private void createPoints(List<Circle> points,int numPoints,ImageView view) {
+    private void createPoints(List<Circle> points,List<Line> lines,int numPoints,ImageView view) {
         var bounds = view.getBoundsInLocal();
         this.x  = bounds.getWidth();
         this.y  = bounds.getHeight();
@@ -176,6 +180,7 @@ public class SceneStartAnalysisWithoutAccountController {
         for(int i=0;i<numPoints;i++) {
             points.add(createPoint(view, Math.random()*101, Math.random()*101));
         }
+        createLines(points,lines);
     }
     private Circle createPoint(ImageView view, double x1, double y1) {
         var sceneCoordinates = view.localToParent(x1, y1);
@@ -188,12 +193,11 @@ public class SceneStartAnalysisWithoutAccountController {
             lines.add(new Line(points.get(i).getCenterX(), points.get(i).getCenterY(),
                     points.get((i + 1) % points.size()).getCenterX(), points.get((i + 1) % points.size()).getCenterY()));
         }
-
         for (Line line : lines) {
             line.setStroke(Color.RED);
         }
     }
-    private void handlePointDrag(MouseEvent event, ImageView view) {
+    private void handlePointDrag(MouseEvent event, ImageView view, int areaIndex) {
         Circle point = (Circle) event.getSource();
 
         // Получаем координаты точки относительно изображения
@@ -218,7 +222,7 @@ public class SceneStartAnalysisWithoutAccountController {
             point.setCenterY(point.getCenterY() + yOffset);
         }
         // Обновляем линии после перемещения
-        updateLines(pointsList, linesList);
+        updateLines(pointsList.get(areaIndex), linesList.get(areaIndex));
     }
 
     // Метод для обновления позиций линий
@@ -230,6 +234,15 @@ public class SceneStartAnalysisWithoutAccountController {
             line.setStartY(points.get(i).getCenterY());
             line.setEndX(points.get((i + 1) % points.size()).getCenterX()); // Циклический сдвиг
             line.setEndY(points.get((i + 1) % points.size()).getCenterY());
+        }
+    }
+    private void createAreas(ImageView view) {
+        for (int i = 0; i < numAreas; i++) {
+            List<Circle> points = new ArrayList<>();
+            List<Line> lines = new ArrayList<>();
+            createPoints(points, lines,numPointsPerArea[i],view);
+            pointsList.add(points);
+            linesList.add(lines);
         }
     }
 
