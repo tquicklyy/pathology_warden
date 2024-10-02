@@ -1,6 +1,5 @@
 package com.example.redactor;
 
-import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -84,6 +83,8 @@ public class SceneMainMenuController {
 
     private Stage currentStage;
 
+    private Scene newScene;
+
     @FXML
     public void switchingToTheAnalysisStartWindowForNotButton(MouseEvent event) throws IOException {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -96,9 +97,9 @@ public class SceneMainMenuController {
         File selectedFile = fileChooser.showOpenDialog(currentStage);
         if(selectedFile != null) {
             Image image = new Image(selectedFile.toURI().toString());
-            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-without-account.fxml"));
-            Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
-            SceneStartAnalysisWithoutAccountController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis.fxml"));
+            newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+            SceneStartAnalysisController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().setImage(image);
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralAnchorPane().prefWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().fitWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
@@ -118,9 +119,9 @@ public class SceneMainMenuController {
         File selectedFile = fileChooser.showOpenDialog(currentStage);
         if(selectedFile != null) {
             Image image = new Image(selectedFile.toURI().toString());
-            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-without-account.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis.fxml"));
             Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
-            SceneStartAnalysisWithoutAccountController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
+            SceneStartAnalysisController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().setImage(image);
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralAnchorPane().prefWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().fitWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
@@ -129,10 +130,26 @@ public class SceneMainMenuController {
     }
 
     @FXML
+    public void switchingToTheLoginWindow(ActionEvent event) throws  IOException {
+        currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-login.fxml"));
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        currentStage.setScene(newScene);
+    }
+
+    @FXML
+    public void switchingToTheRegistrationWindow(ActionEvent event) throws  IOException {
+        currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-registration.fxml"));
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        currentStage.setScene(newScene);
+    }
+
+    @FXML
     private void switchingToTheInformationWindow(ActionEvent event) throws IOException {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-information-about-program.fxml"));
-        Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
 

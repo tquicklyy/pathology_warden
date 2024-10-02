@@ -28,7 +28,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SceneStartAnalysisWithoutAccountController {
+public class SceneStartAnalysisController {
     private final List<List<Circle>> pointsList = new ArrayList<>();
     private final List<List<Line>> linesList = new ArrayList<>(); // Список списков для хранения линий
     private final int[] numPointsPerArea = {4, 5, 3, 3, 3}; // Количество точек для каждой области
@@ -95,13 +95,15 @@ public class SceneStartAnalysisWithoutAccountController {
 
     private Stage currentStage;
 
+    private Scene newScene;
+
     private boolean isBeforeAnalysisStartAnalysisButtonRed = false;
 
     @FXML
     private void switchingToTheMainMenu(MouseEvent event) throws IOException {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
-        Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
 
@@ -109,7 +111,23 @@ public class SceneStartAnalysisWithoutAccountController {
     private void switchingToTheInformationWindow(ActionEvent event) throws IOException {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-information-about-program.fxml"));
-        Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        currentStage.setScene(newScene);
+    }
+
+    @FXML
+    public void switchingToTheLoginWindow(ActionEvent event) throws  IOException {
+        currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-login.fxml"));
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        currentStage.setScene(newScene);
+    }
+
+    @FXML
+    public void switchingToTheRegistrationWindow(ActionEvent event) throws  IOException {
+        currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-registration.fxml"));
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
 
@@ -144,10 +162,10 @@ public class SceneStartAnalysisWithoutAccountController {
     private void startAnalysis(MouseEvent event) throws IOException {
         if(isBeforeAnalysisStartAnalysisButtonRed) {
             currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-end-analysis-without-account.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-end-analysis.fxml"));
             Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
 
-            SceneEndAnalysisWithoutAccountController sceneEndAnalysisWithoutAccountController = fxmlLoader.getController();
+            SceneEndAnalysisController sceneEndAnalysisWithoutAccountController = fxmlLoader.getController();
             sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView().setImage(beforeAnalysisGeneralImageView.getImage());
 
             sceneEndAnalysisWithoutAccountController.getEndAnalysisNameOfReportLabel().setText(beforeAnalysisNameOfReportTextField.getText());

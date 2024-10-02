@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="EndAnalysisBorderPane" prefHeight="500.0" prefWidth="740.0" styleClass="root" stylesheets="@../../../cssStyle/endAnalysisBorderPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.redactor.SceneEndAnalysisWithoutAccountController">
+<BorderPane fx:id="EndAnalysisBorderPane" prefHeight="500.0" prefWidth="740.0" styleClass="root" stylesheets="@../IdeaProjects/PW_new/src/main/resources/cssStyle/EndAnalysisBorderPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.redactor.SceneEndAnalysisController">
     <top>
         <HBox fx:id="EndAnalysisTopHBox" minWidth="-Infinity" prefHeight="37.0" prefWidth="743.0" style="-fx-background-color: #FC7777;" BorderPane.alignment="CENTER">
             <children>
@@ -23,7 +23,7 @@
                     <children>
                         <ImageView fx:id="EndAnalysisIconImageView" fitHeight="30.0" fitWidth="51.0" onMouseClicked="#switchingToTheMainMenu" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../images/logo-pathology-warden.png" />
+                                <Image url="@../IdeaProjects/PW_new/src/main/resources/images/logo-pathology-warden.png" />
                             </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -57,7 +57,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </Button>
-                        <Button fx:id="EndAnalysisInfoButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchingToTheInformationWindow" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #FC7777; -fx-border-radius: 100; -fx-border-width: 2px; -fx-border-color: #FFFFFF;" text="i" textFill="WHITE">
+                        <Button fx:id="EndAnalysisInfoButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #FC7777; -fx-border-radius: 100; -fx-border-width: 2px; -fx-border-color: #FFFFFF;" text="i" textFill="WHITE">
                             <font>
                                 <Font name="Arial Bold" size="15.0" />
                             </font>
@@ -76,7 +76,7 @@
    <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
             <children>
-            <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
+            <VBox fx:id="EndAnalysisTopLabelVBox" alignment="CENTER" VBox.vgrow="ALWAYS">
                <children>
                   <Label fx:id="EndAnalysisCenterTopLabel" alignment="CENTER" prefHeight="13.0" prefWidth="320.0" text="Исследование завершено! Результаты:" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                      <font>
@@ -90,30 +90,30 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="1080.0" prefWidth="1920.0" VBox.vgrow="ALWAYS">
                <children>
-                      <AnchorPane fx:id="EndAnalysisGeneralAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="294.0" prefWidth="294.0" VBox.vgrow="ALWAYS">
+                      <AnchorPane fx:id="EndAnalysisGeneralAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="296.0" prefWidth="296.0" VBox.vgrow="ALWAYS">
                           <children>
-                        <StackPane prefHeight="295.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                                    <ImageView fx:id="EndAnalysisGeneralImageView" fitHeight="295.0" fitWidth="295.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="EndAnalysisGeneralImageView" fitHeight="296.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </StackPane>
                           </children>
                       </AnchorPane>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="110.0" prefWidth="743.0" spacing="5.0" VBox.vgrow="ALWAYS">
+            <VBox fx:id="EndAnalysisBottomVBox" alignment="CENTER" prefHeight="110.0" prefWidth="743.0" spacing="5.0" VBox.vgrow="ALWAYS">
                <children>
-                  <AnchorPane fx:id="EndAnalysisEditAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="57.0" style="-fx-border-color: #FC7777;">
+                  <AnchorPane fx:id="EndAnalysisEditAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="500.0" style="-fx-border-color: #FC7777;">
                      <children>
-                        <ImageView fx:id="EndAnalysisEditImageView" fitHeight="27.0" fitWidth="46.0" layoutX="4.0" layoutY="5.0" onMouseClicked="#openingClosingEditButtons" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="EndAnalysisEditImageView" fitHeight="27.0" fitWidth="46.0" layoutX="4.0" layoutY="5.0" onMouseClicked="#openingEditButtons" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../images/button-for-photo-editing-before-open.png" />
+                              <Image url="@../IdeaProjects/PW_new/src/main/resources/images/button-for-photo-editing-before-open.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <Button fx:id="EndAnalysisAddDotsButton" disable="true" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #FC7777; -fx-background-radius: 7px; -fx-border-radius: 7px; -fx-border-color: #FC7777;" text="Добавить точки" textFill="WHITE" visible="false">
+                        <Button fx:id="EndAnalysisAddDotsButton" layoutX="68.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #FC7777; -fx-background-radius: 7px; -fx-border-radius: 7px; -fx-border-color: #FC7777;" text="Добавить точки" textFill="WHITE">
                            <font>
                               <Font name="Arial Black" size="10.0" />
                            </font>
@@ -121,7 +121,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="EndAnalysisDeleteDotsButton" disable="true" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #FC7777; -fx-border-color: #FC7777; -fx-border-radius: 7px; -fx-background-radius: 7px;" text="Удалить точки" textFill="WHITE" visible="false">
+                        <Button fx:id="EndAnalysisDeleteDotsButton" layoutX="212.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #FC7777; -fx-border-color: #FC7777; -fx-border-radius: 7px; -fx-background-radius: 7px;" text="Удалить точки" textFill="WHITE">
                            <font>
                               <Font name="Arial Black" size="10.0" />
                            </font>
@@ -129,12 +129,12 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <ColorPicker fx:id="EndAnalysisEditColorPicker" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #FC7777; -fx-background-radius: 7px; -fx-border-color: #FC7777; -fx-border-radius: 7px;" stylesheets="@../../../cssStyle/endAnalysisEditColorPicker.css" visible="false">
+                        <ColorPicker fx:id="EndAnalysisEditColorPicker" layoutX="356.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #FC7777; -fx-background-radius: 7px; -fx-border-color: #FC7777; -fx-border-radius: 7px;" stylesheets="@../IdeaProjects/PW_new/src/main/resources/cssStyle/hui.css">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ColorPicker>
-                        <Label fx:id="EndAnalysisEditColorPickerLabel" alignment="CENTER" disable="true" layoutY="6.0" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #FC7777;" text="Цвет точки" textFill="WHITE" visible="false">
+                        <Label fx:id="EndAnalysisEditColorPickerLabel" alignment="CENTER" layoutX="381.0" layoutY="6.0" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #FC7777;" text="Цвет точки" textFill="WHITE">
                            <font>
                               <Font name="Arial Black" size="10.0" />
                            </font>
@@ -146,20 +146,20 @@
                   </AnchorPane>
                   <HBox fx:id="EndAnalysisEditHBox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="500.0" style="-fx-border-color: #FC7777;">
                      <children>
-                        <Label fx:id="EndAnalysisNameOfReportLabel" alignment="CENTER" prefHeight="17.0" prefWidth="236.0" text="Название отчёта (документа)">
+                        <Label fx:id="EndAnalysisNameOfReportLabel" alignment="CENTER" prefHeight="17.0" prefWidth="236.0" text="Исследование-1-0:12-06.06.2024">
                            <font>
                               <Font name="System Bold" size="10.0" />
                            </font>
                         </Label>
                         <Line fx:id="EndAnalysisLine" endY="29.0" stroke="#fc7777" strokeWidth="1.2" />
-                        <Label fx:id="EndAnalysisNameOfPatientLabel" alignment="CENTER" prefHeight="17.0" prefWidth="230.0" text="ФИО">
+                        <Label fx:id="EndAnalysisNameOfPatientLabel" alignment="CENTER" prefHeight="17.0" prefWidth="230.0" text="Сучков Станислав Романович">
                            <font>
                               <Font name="System Bold" size="10.0" />
                            </font>
                         </Label>
                         <ImageView fx:id="EndAnalysisDownoladImageView" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../images/button-for-downloading-image.png" />
+                              <Image url="@../IdeaProjects/PW_new/src/main/resources/images/button-for-downloading-image.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -167,7 +167,7 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <Button fx:id="EndAnalysisStartAnalysisButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#startNewAnalysis" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #FC7777; -fx-background-radius: 5px; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-border-color: #FC7777;" text="Начать новый анализ" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="EndAnalysisStartAnalysisButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="150.0" style="-fx-background-color: #FC7777; -fx-background-radius: 5px; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-border-color: #FC7777;" text="Начать новый анализ" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="10.0" />
                      </font>

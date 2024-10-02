@@ -101,11 +101,13 @@ public class SceneInformationAboutProgramController {
 
     private Stage currentStage;
 
+    private Scene newScene;
+
     @FXML
     private void switchingToTheMainMenuForButton(ActionEvent event) throws IOException {
         currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
-        Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
 
@@ -113,7 +115,7 @@ public class SceneInformationAboutProgramController {
     private void switchingToTheMainMenuForNotButton(MouseEvent event) throws IOException {
         currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
-        Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
 
