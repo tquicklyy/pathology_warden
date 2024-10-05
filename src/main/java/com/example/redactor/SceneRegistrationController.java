@@ -44,6 +44,18 @@ public class SceneRegistrationController {
     private TextField RegistrationScenePasswordTextField;
 
     @FXML
+    private TextField RegistrationSceneFirstNameTextField;
+
+    @FXML
+    private TextField RegistrationSceneSecondNameTextField;
+
+    @FXML
+    private TextField RegistrationScenePatronymicTextField;
+
+    @FXML
+    private TextField RegistrationSceneLoginTextField;
+
+    @FXML
     private Label RegistrationSceneRegistrationLabel;
 
     @FXML
@@ -88,7 +100,7 @@ public class SceneRegistrationController {
     }
 
         private void changingRegistrationSceneRegistrationLabel() {
-        if(RegistrationSceneEmailTextField.getText().isEmpty() || RegistrationScenePasswordTextField.getText().isEmpty()) {
+        if(RegistrationSceneFirstNameTextField.getText().isEmpty() || RegistrationSceneSecondNameTextField.getText().isEmpty() || RegistrationScenePatronymicTextField.getText().isEmpty() || RegistrationSceneLoginTextField.getText().isEmpty() || RegistrationSceneEmailTextField.getText().isEmpty() || RegistrationScenePasswordTextField.getText().isEmpty()) {
             RegistrationSceneRegistrationLabel.getStyleClass().clear();
             RegistrationSceneRegistrationLabel.getStyleClass().add("gray");
             RegistrationSceneRegistrationLabel.setCursor(Cursor.DEFAULT);
@@ -120,6 +132,22 @@ public class SceneRegistrationController {
 
                 RegistrationSceneCenterLabel.setPrefWidth(367);
                 RegistrationSceneCenterLabel.setFont(Font.font("Arial", FontWeight.BOLD,29));
+
+                RegistrationSceneFirstNameTextField.setPrefHeight(30);
+                RegistrationSceneFirstNameTextField.setPrefWidth(367);
+                RegistrationSceneFirstNameTextField.setFont(Font.font("System",12));
+
+                RegistrationSceneSecondNameTextField.setPrefHeight(30);
+                RegistrationSceneSecondNameTextField.setPrefWidth(367);
+                RegistrationSceneSecondNameTextField.setFont(Font.font("System",12));
+
+                RegistrationScenePatronymicTextField.setPrefHeight(30);
+                RegistrationScenePatronymicTextField.setPrefWidth(367);
+                RegistrationScenePatronymicTextField.setFont(Font.font("System",12));
+
+                RegistrationSceneLoginTextField.setPrefHeight(30);
+                RegistrationSceneLoginTextField.setPrefWidth(367);
+                RegistrationSceneLoginTextField.setFont(Font.font("System",12));
 
                 RegistrationSceneEmailTextField.setPrefHeight(30);
                 RegistrationSceneEmailTextField.setPrefWidth(367);
@@ -153,6 +181,22 @@ public class SceneRegistrationController {
                 RegistrationSceneCenterLabel.setPrefWidth(439.2);
                 RegistrationSceneCenterLabel.setFont(Font.font("Arial", FontWeight.BOLD,30));
 
+                RegistrationSceneFirstNameTextField.setPrefHeight(31);
+                RegistrationSceneFirstNameTextField.setPrefWidth(439.2);
+                RegistrationSceneFirstNameTextField.setFont(Font.font("System",12.5));
+
+                RegistrationSceneSecondNameTextField.setPrefHeight(31);
+                RegistrationSceneSecondNameTextField.setPrefWidth(439.2);
+                RegistrationSceneSecondNameTextField.setFont(Font.font("System",12.5));
+
+                RegistrationScenePatronymicTextField.setPrefHeight(31);
+                RegistrationScenePatronymicTextField.setPrefWidth(439.2);
+                RegistrationScenePatronymicTextField.setFont(Font.font("System",12.5));
+
+                RegistrationSceneLoginTextField.setPrefHeight(31);
+                RegistrationSceneLoginTextField.setPrefWidth(439.2);
+                RegistrationSceneLoginTextField.setFont(Font.font("System",12.5));
+
                 RegistrationSceneEmailTextField.setPrefHeight(31);
                 RegistrationSceneEmailTextField.setPrefWidth(439.2);
                 RegistrationSceneEmailTextField.setFont(Font.font("System",12.5));
@@ -184,6 +228,22 @@ public class SceneRegistrationController {
 
                 RegistrationSceneCenterLabel.setPrefWidth(511.4);
                 RegistrationSceneCenterLabel.setFont(Font.font("Arial", FontWeight.BOLD,31));
+
+                RegistrationSceneFirstNameTextField.setPrefHeight(32);
+                RegistrationSceneFirstNameTextField.setPrefWidth(511.4);
+                RegistrationSceneFirstNameTextField.setFont(Font.font("System",13));
+
+                RegistrationSceneSecondNameTextField.setPrefHeight(32);
+                RegistrationSceneSecondNameTextField.setPrefWidth(511.4);
+                RegistrationSceneSecondNameTextField.setFont(Font.font("System",13));
+
+                RegistrationScenePatronymicTextField.setPrefHeight(32);
+                RegistrationScenePatronymicTextField.setPrefWidth(511.4);
+                RegistrationScenePatronymicTextField.setFont(Font.font("System",13));
+
+                RegistrationSceneLoginTextField.setPrefHeight(32);
+                RegistrationSceneLoginTextField.setPrefWidth(511.4);
+                RegistrationSceneLoginTextField.setFont(Font.font("System",13));
 
                 RegistrationSceneEmailTextField.setPrefHeight(32);
                 RegistrationSceneEmailTextField.setPrefWidth(511.4);
@@ -217,6 +277,22 @@ public class SceneRegistrationController {
                 RegistrationSceneCenterLabel.setPrefWidth(583.6);
                 RegistrationSceneCenterLabel.setFont(Font.font("Arial", FontWeight.BOLD,32));
 
+                RegistrationSceneFirstNameTextField.setPrefHeight(33);
+                RegistrationSceneFirstNameTextField.setPrefWidth(583.6);
+                RegistrationSceneFirstNameTextField.setFont(Font.font("System",13.5));
+
+                RegistrationSceneSecondNameTextField.setPrefHeight(33);
+                RegistrationSceneSecondNameTextField.setPrefWidth(583.6);
+                RegistrationSceneSecondNameTextField.setFont(Font.font("System",13.5));
+
+                RegistrationScenePatronymicTextField.setPrefHeight(33);
+                RegistrationScenePatronymicTextField.setPrefWidth(583.6);
+                RegistrationScenePatronymicTextField.setFont(Font.font("System",13.5));
+
+                RegistrationSceneLoginTextField.setPrefHeight(33);
+                RegistrationSceneLoginTextField.setPrefWidth(583.6);
+                RegistrationSceneLoginTextField.setFont(Font.font("System",13.5));
+
                 RegistrationSceneEmailTextField.setPrefHeight(33);
                 RegistrationSceneEmailTextField.setPrefWidth(583.6);
                 RegistrationSceneEmailTextField.setFont(Font.font("System",13.5));
@@ -249,6 +325,22 @@ public class SceneRegistrationController {
                 RegistrationSceneCenterLabel.setPrefWidth(655.8);
                 RegistrationSceneCenterLabel.setFont(Font.font("Arial", FontWeight.BOLD,33));
 
+                RegistrationSceneFirstNameTextField.setPrefHeight(34);
+                RegistrationSceneFirstNameTextField.setPrefWidth(655.8);
+                RegistrationSceneFirstNameTextField.setFont(Font.font("System",14));
+
+                RegistrationSceneSecondNameTextField.setPrefHeight(34);
+                RegistrationSceneSecondNameTextField.setPrefWidth(655.8);
+                RegistrationSceneSecondNameTextField.setFont(Font.font("System",14));
+
+                RegistrationScenePatronymicTextField.setPrefHeight(34);
+                RegistrationScenePatronymicTextField.setPrefWidth(655.8);
+                RegistrationScenePatronymicTextField.setFont(Font.font("System",14));
+
+                RegistrationSceneLoginTextField.setPrefHeight(34);
+                RegistrationSceneLoginTextField.setPrefWidth(655.8);
+                RegistrationSceneLoginTextField.setFont(Font.font("System",14));
+
                 RegistrationSceneEmailTextField.setPrefHeight(34);
                 RegistrationSceneEmailTextField.setPrefWidth(655.8);
                 RegistrationSceneEmailTextField.setFont(Font.font("System",14));
@@ -266,7 +358,10 @@ public class SceneRegistrationController {
                 RegistrationSceneCenterRightLabel.setFont(Font.font("Calibri",18));
             }
         });
-
+        RegistrationSceneFirstNameTextField.textProperty().addListener((observable, oldValue, newValue) -> changingRegistrationSceneRegistrationLabel());
+        RegistrationSceneSecondNameTextField.textProperty().addListener((observable, oldValue, newValue) -> changingRegistrationSceneRegistrationLabel());
+        RegistrationScenePatronymicTextField.textProperty().addListener((observable, oldValue, newValue) -> changingRegistrationSceneRegistrationLabel());
+        RegistrationSceneLoginTextField.textProperty().addListener((observable, oldValue, newValue) -> changingRegistrationSceneRegistrationLabel());
         RegistrationSceneEmailTextField.textProperty().addListener((observable, oldValue, newValue) -> changingRegistrationSceneRegistrationLabel());
         RegistrationScenePasswordTextField.textProperty().addListener((observable, oldValue, newValue) -> changingRegistrationSceneRegistrationLabel());
     }

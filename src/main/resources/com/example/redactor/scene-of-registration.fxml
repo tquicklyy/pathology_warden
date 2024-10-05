@@ -24,6 +24,26 @@
                   <Font name="Arial Bold" size="29.0" />
                </font>
             </Label>
+            <TextField fx:id="RegistrationSceneFirstNameTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="367.0" promptText="Имя" style="-fx-border-color: black; -fx-background-radius: 5px; -fx-border-radius: 5px;">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="RegistrationSceneSecondNameTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="367.0" promptText="Фамилия" style="-fx-border-color: black; -fx-background-radius: 5px; -fx-border-radius: 5px;">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="RegistrationScenePatronymicTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="367.0" promptText="Отчество" style="-fx-border-color: black; -fx-background-radius: 5px; -fx-border-radius: 5px;">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="RegistrationSceneLoginTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="367.0" promptText="Логин" style="-fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
             <TextField fx:id="RegistrationSceneEmailTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="367.0" promptText="Электронная почта" style="-fx-border-color: black; -fx-background-radius: 5px; -fx-border-radius: 5px;" VBox.vgrow="NEVER">
                <cursor>
                   <Cursor fx:constant="TEXT" />
