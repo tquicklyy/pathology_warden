@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="RegistrationSceneBorderPane" prefHeight="500.0" prefWidth="740.0" stylesheets="@../../../cssStyle/registrationAndLoginBorderPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.redactor.SceneRegistrationController">
+<BorderPane fx:id="infoMenuBorderPane" prefHeight="500.0" prefWidth="740.0" stylesheets="@../cssStyle/registrationAndLoginBorderPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.redactor.SceneRegistrationController">
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" BorderPane.alignment="CENTER">
             <BorderPane.margin>
@@ -32,7 +32,7 @@
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor></TextField>
-            <Label fx:id="RegistrationSceneRegistrationLabel" alignment="CENTER" prefHeight="37.0" prefWidth="192.0" styleClass="gray" stylesheets="@../../../cssStyle/registrationAndLoginLabel.css" text="Зарегистрироваться" textFill="WHITE">
+            <Label fx:id="RegistrationSceneRegistrationLabel" alignment="CENTER" prefHeight="37.0" prefWidth="192.0" style="-fx-border-color: #FC7777; -fx-background-color: #FC7777; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Зарегистрироваться" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>
@@ -47,7 +47,7 @@
                         <Font name="Calibri" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="RegistrationSceneCenterRightLabel" onMouseClicked="#switchingToTheLoginWindow" text="Войти" underline="true">
+                  <Label fx:id="RegistrationSceneCenterRightLabel" text="Войти" underline="true">
                      <font>
                         <Font name="Calibri" size="16.0" />
                      </font>
@@ -61,13 +61,13 @@
         </VBox>
     </center>
     <top>
-        <HBox fx:id="RegistrationSceneTopHBox" minWidth="-Infinity" prefHeight="37.0" prefWidth="743.0" style="-fx-background-color: #FC7777;" BorderPane.alignment="CENTER">
+        <HBox fx:id="infoMenuTopHBox" minWidth="-Infinity" prefHeight="37.0" prefWidth="743.0" style="-fx-background-color: #FC7777;" BorderPane.alignment="CENTER">
             <children>
                 <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="400.0" style="-fx-background-color: #FC7777;" HBox.hgrow="ALWAYS">
                     <children>
                         <ImageView fx:id="RegistrationSceneIconImageView" fitHeight="30.0" fitWidth="51.0" onMouseClicked="#switchingToTheMainMenuForNotButton" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../images/logo-pathology-warden.png" />
+                                <Image url="@../images/logo-pathology-warden.png" />
                             </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />

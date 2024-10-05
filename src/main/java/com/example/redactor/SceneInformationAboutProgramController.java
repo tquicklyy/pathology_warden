@@ -158,7 +158,7 @@ public class SceneInformationAboutProgramController {
                 infoMenuIconImageView.setFitWidth(61);
 
                 infoMenuNameOfProjectLabel.setPrefHeight(36);
-                infoMenuNameOfProjectLabel.setPrefWidth(67);
+                infoMenuNameOfProjectLabel.setPrefWidth(66);
                 infoMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 11));
 
                 infoMenuTopHBox.setPrefHeight(43);
@@ -172,7 +172,7 @@ public class SceneInformationAboutProgramController {
                 infoMenuIconImageView.setFitWidth(66);
 
                 infoMenuNameOfProjectLabel.setPrefHeight(39);
-                infoMenuNameOfProjectLabel.setPrefWidth(72);
+                infoMenuNameOfProjectLabel.setPrefWidth(71);
                 infoMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 11.5));
 
                 infoMenuTopHBox.setPrefHeight(46);
@@ -185,7 +185,7 @@ public class SceneInformationAboutProgramController {
                 infoMenuIconImageView.setFitWidth(71);
 
                 infoMenuNameOfProjectLabel.setPrefHeight(42);
-                infoMenuNameOfProjectLabel.setPrefWidth(77);
+                infoMenuNameOfProjectLabel.setPrefWidth(76);
                 infoMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 12));
 
                 infoMenuTopHBox.setPrefHeight(49);

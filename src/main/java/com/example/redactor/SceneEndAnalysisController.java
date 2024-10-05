@@ -459,7 +459,7 @@ public class SceneEndAnalysisController {
                 EndAnalysisRegisterButton.setFont(Font.font("Arial Black", 11));
 
                 EndAnalysisNameOfProjectLabel.setPrefHeight(36);
-                EndAnalysisNameOfProjectLabel.setPrefWidth(67);
+                EndAnalysisNameOfProjectLabel.setPrefWidth(66);
                 EndAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 11));
 
                 EndAnalysisStartAnalysisButton.setPrefHeight(26);
@@ -549,7 +549,7 @@ public class SceneEndAnalysisController {
                 EndAnalysisRegisterButton.setFont(Font.font("Arial Black", 11.5));
 
                 EndAnalysisNameOfProjectLabel.setPrefHeight(39);
-                EndAnalysisNameOfProjectLabel.setPrefWidth(72);
+                EndAnalysisNameOfProjectLabel.setPrefWidth(71);
                 EndAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 11.5));
 
                 EndAnalysisStartAnalysisButton.setPrefHeight(27);
@@ -639,7 +639,7 @@ public class SceneEndAnalysisController {
                 EndAnalysisRegisterButton.setFont(Font.font("Arial Black", 12));
 
                 EndAnalysisNameOfProjectLabel.setPrefHeight(42);
-                EndAnalysisNameOfProjectLabel.setPrefWidth(77);
+                EndAnalysisNameOfProjectLabel.setPrefWidth(76);
                 EndAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 12));
 
                 EndAnalysisStartAnalysisButton.setPrefHeight(28);

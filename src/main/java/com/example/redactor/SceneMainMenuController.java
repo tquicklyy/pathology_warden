@@ -316,7 +316,7 @@ public class SceneMainMenuController {
                 mainMenuNameOfPatientTextField.setFont(Font.font("System", 11));
 
                 mainMenuNameOfProjectLabel.setPrefHeight(36);
-                mainMenuNameOfProjectLabel.setPrefWidth(67);
+                mainMenuNameOfProjectLabel.setPrefWidth(66);
                 mainMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 11));
 
                 mainMenuNameOfReportTextField.setPrefHeight(26);
@@ -376,7 +376,7 @@ public class SceneMainMenuController {
                 mainMenuNameOfPatientTextField.setFont(Font.font("System", 11.5));
 
                 mainMenuNameOfProjectLabel.setPrefHeight(39);
-                mainMenuNameOfProjectLabel.setPrefWidth(72);
+                mainMenuNameOfProjectLabel.setPrefWidth(71);
                 mainMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 11.5));
 
                 mainMenuNameOfReportTextField.setPrefHeight(27);
@@ -431,7 +431,7 @@ public class SceneMainMenuController {
                 mainMenuNameOfPatientTextField.setFont(Font.font("System", 12));
 
                 mainMenuNameOfProjectLabel.setPrefHeight(42);
-                mainMenuNameOfProjectLabel.setPrefWidth(77);
+                mainMenuNameOfProjectLabel.setPrefWidth(76);
                 mainMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 12));
 
                 mainMenuNameOfReportTextField.setPrefHeight(28);

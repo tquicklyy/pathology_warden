@@ -391,7 +391,7 @@ public class SceneStartAnalysisController {
                 beforeAnalysisNameOfPatientTextField.setFont(Font.font("System", 11));
 
                 beforeAnalysisNameOfProjectLabel.setPrefHeight(36);
-                beforeAnalysisNameOfProjectLabel.setPrefWidth(67);
+                beforeAnalysisNameOfProjectLabel.setPrefWidth(66);
                 beforeAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 11));
 
                 beforeAnalysisNameOfReportTextField.setPrefHeight(26);
@@ -437,7 +437,7 @@ public class SceneStartAnalysisController {
                 beforeAnalysisNameOfPatientTextField.setFont(Font.font("System", 11.5));
 
                 beforeAnalysisNameOfProjectLabel.setPrefHeight(39);
-                beforeAnalysisNameOfProjectLabel.setPrefWidth(72);
+                beforeAnalysisNameOfProjectLabel.setPrefWidth(71);
                 beforeAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 11.5));
 
                 beforeAnalysisNameOfReportTextField.setPrefHeight(27);
@@ -483,7 +483,7 @@ public class SceneStartAnalysisController {
                 beforeAnalysisNameOfPatientTextField.setFont(Font.font("System", 12));
 
                 beforeAnalysisNameOfProjectLabel.setPrefHeight(42);
-                beforeAnalysisNameOfProjectLabel.setPrefWidth(77);
+                beforeAnalysisNameOfProjectLabel.setPrefWidth(76);
                 beforeAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 12));
 
                 beforeAnalysisNameOfReportTextField.setPrefHeight(28);
