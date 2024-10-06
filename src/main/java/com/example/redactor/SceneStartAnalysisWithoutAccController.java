@@ -31,7 +31,7 @@ import java.util.List;
 public class SceneStartAnalysisWithoutAccController {
     private final List<List<Circle>> pointsList = new ArrayList<>();
     private final List<List<Line>> linesList = new ArrayList<>(); // Список списков для хранения линий
-    private final int[] numPointsPerArea = {4, 5, 3, 3, 3}; // Количество точек для каждой области
+    private final int[] numPointsPerArea = {2, 5, 3, 3, 3}; // Количество точек для каждой области
     private final int numAreas = numPointsPerArea.length; // Количество областей
     private double x;
     private double y;
