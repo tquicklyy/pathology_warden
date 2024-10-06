@@ -52,12 +52,12 @@
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor></TextField>
-            <Label fx:id="RegistrationSceneRegistrationLabel" alignment="CENTER" prefHeight="37.0" prefWidth="192.0" styleClass="gray" stylesheets="@../../../cssStyle/registrationAndLoginLabel.css" text="Зарегистрироваться" textFill="WHITE">
+            <Label fx:id="RegistrationSceneRegistrationLabel" alignment="CENTER" onMouseClicked="#registerNewAccount" prefHeight="37.0" prefWidth="192.0" styleClass="gray" stylesheets="@../../../cssStyle/registrationAndLoginLabel.css" text="Зарегистрироваться" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="HAND" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
             </Label>
             <HBox alignment="CENTER" prefHeight="10.0" prefWidth="743.0" spacing="3.0">

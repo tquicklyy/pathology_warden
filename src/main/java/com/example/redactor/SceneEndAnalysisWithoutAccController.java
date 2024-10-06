@@ -27,7 +27,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class SceneEndAnalysisController {
+public class SceneEndAnalysisWithoutAccController {
 
     @FXML
     private Button EndAnalysisAddDotsButton;
@@ -38,7 +38,6 @@ public class SceneEndAnalysisController {
 
     @FXML
     private BorderPane EndAnalysisBorderPane;
-
 
     @FXML
     private Label EndAnalysisCenterTopLabel;
@@ -135,7 +134,7 @@ public class SceneEndAnalysisController {
     @FXML
     private void switchingToTheMainMenu(MouseEvent event) throws IOException {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-without-acc.fxml"));
         newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
@@ -176,9 +175,9 @@ public class SceneEndAnalysisController {
         File selectedFile = fileChooser.showOpenDialog(currentStage);
         if(selectedFile != null) {
             Image image = new Image(selectedFile.toURI().toString());
-            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-without-acc.fxml"));
             Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
-            SceneStartAnalysisController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
+            SceneStartAnalysisWithoutAccController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().setImage(image);
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralAnchorPane().prefWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().fitWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());

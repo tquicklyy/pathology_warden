@@ -28,7 +28,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SceneStartAnalysisController {
+public class SceneStartAnalysisWithoutAccController {
     private final List<List<Circle>> pointsList = new ArrayList<>();
     private final List<List<Line>> linesList = new ArrayList<>(); // Список списков для хранения линий
     private final int[] numPointsPerArea = {4, 5, 3, 3, 3}; // Количество точек для каждой области
@@ -102,7 +102,7 @@ public class SceneStartAnalysisController {
     @FXML
     private void switchingToTheMainMenu(MouseEvent event) throws IOException {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-without-acc.fxml"));
         newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
@@ -162,10 +162,10 @@ public class SceneStartAnalysisController {
     private void startAnalysis(MouseEvent event) throws IOException {
         if(isBeforeAnalysisStartAnalysisButtonRed) {
             currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-end-analysis.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-end-analysis-without-acc.fxml"));
             Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
 
-            SceneEndAnalysisController sceneEndAnalysisWithoutAccountController = fxmlLoader.getController();
+            SceneEndAnalysisWithoutAccController sceneEndAnalysisWithoutAccountController = fxmlLoader.getController();
             sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView().setImage(beforeAnalysisGeneralImageView.getImage());
 
             sceneEndAnalysisWithoutAccountController.getEndAnalysisNameOfReportLabel().setText(beforeAnalysisNameOfReportTextField.getText());
@@ -360,6 +360,7 @@ public class SceneStartAnalysisController {
                 beforeAnalysisForPhotoSelectionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 11.5));
 
                 beforeAnalysisCameraForPhotoSelectionImageView.setFitWidth(21.5);
+
             } else if (newValue.intValue() < 830) {
                 beforeAnalysisTopHBox.setPrefHeight(43);
                 beforeAnalysisTopHBox.setPrefWidth(743);
@@ -406,6 +407,7 @@ public class SceneStartAnalysisController {
                 beforeAnalysisForPhotoSelectionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 12));
 
                 beforeAnalysisCameraForPhotoSelectionImageView.setFitWidth(22);
+
             } else if (newValue.intValue() < 940) {
                 beforeAnalysisTopHBox.setPrefHeight(46);
                 beforeAnalysisTopHBox.setPrefWidth(743);
@@ -452,6 +454,7 @@ public class SceneStartAnalysisController {
                 beforeAnalysisForPhotoSelectionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 12.5));
 
                 beforeAnalysisCameraForPhotoSelectionImageView.setFitWidth(22.5);
+
             } else {
                 beforeAnalysisTopHBox.setPrefHeight(49);
                 beforeAnalysisTopHBox.setPrefWidth(743);
@@ -498,6 +501,7 @@ public class SceneStartAnalysisController {
                 beforeAnalysisForPhotoSelectionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 13));
 
                 beforeAnalysisCameraForPhotoSelectionImageView.setFitWidth(23);
+
             }
         });
 

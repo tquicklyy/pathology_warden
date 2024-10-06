@@ -21,7 +21,7 @@ public class PathologyWardenApplication extends Application {
 
     @Override
     public void start(Stage mainMenuStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-without-acc.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         mainMenuStage.setMinWidth(MIN_WIDTH_STAGE);
@@ -43,6 +43,7 @@ public class PathologyWardenApplication extends Application {
         };
         mainMenuStage.xProperty().addListener(mainMenuStagePositionChangeListener);
         mainMenuStage.yProperty().addListener(mainMenuStagePositionChangeListener);
+        UserSession.connectToDb();
     }
 
     private void resetTimerForMainMenuStageDragging(Stage stage) {

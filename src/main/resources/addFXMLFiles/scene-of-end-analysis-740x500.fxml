@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="EndAnalysisBorderPane" prefHeight="500.0" prefWidth="740.0" styleClass="root" stylesheets="@../IdeaProjects/PW_new/src/main/resources/cssStyle/EndAnalysisBorderPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.redactor.SceneEndAnalysisController">
+<BorderPane fx:id="EndAnalysisBorderPane" prefHeight="500.0" prefWidth="740.0" styleClass="root" stylesheets="@../IdeaProjects/PW_new/src/main/resources/cssStyle/EndAnalysisBorderPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.redactor.SceneEndAnalysisWithoutAccController">
     <top>
         <HBox fx:id="EndAnalysisTopHBox" minWidth="-Infinity" prefHeight="37.0" prefWidth="743.0" style="-fx-background-color: #FC7777;" BorderPane.alignment="CENTER">
             <children>

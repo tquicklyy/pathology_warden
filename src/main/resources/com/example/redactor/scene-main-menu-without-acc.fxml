@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainMenuBorderPane" prefHeight="500.0" prefWidth="740.0" styleClass="root" stylesheets="@../../cssStyle/mainMenuBorderPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.redactor.SceneMainMenuWithoutAccController">
+<BorderPane fx:id="mainMenuBorderPane" prefHeight="500.0" prefWidth="740.0" styleClass="root" stylesheets="@../../../cssStyle/mainMenuBorderPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.redactor.SceneMainMenuWithoutAccController">
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
             <children>
@@ -35,7 +36,7 @@
                <children>
                       <AnchorPane fx:id="mainMenuGeneralAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="320.0" style="-fx-background-color: #FDE5E5; -fx-border-color: #FC7777;" VBox.vgrow="ALWAYS">
                           <children>
-                              <ImageView fx:id="mainMenuGeneralImageView" fitHeight="459.0" fitWidth="529.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <ImageView fx:id="mainMenuGeneralImageView" fitHeight="320.0" fitWidth="320.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         <StackPane layoutX="-35.0" layoutY="-31.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="334.0" prefWidth="554.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <HBox fx:id="mainMenuCenterHBox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#switchingToTheAnalysisStartWindowForNotButton" prefHeight="48.0" prefWidth="140.0" style="-fx-background-radius: 5px; -fx-background-color: #FC7777;" StackPane.alignment="CENTER">
@@ -44,22 +45,43 @@
                                        <children>
                                           <StackPane layoutX="35.0" layoutY="33.0" prefHeight="60.0" prefWidth="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
-                                                <Circle fx:id="mainMenuPlusCircle" fill="#fc7777" radius="16.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" />
-                                                <Line fx:id="mainMenuPlusHLine" endY="16.0" stroke="WHITE" strokeWidth="2.0" StackPane.alignment="CENTER" />
-                                                <Line fx:id="mainMenuPlusVLine" endX="16.0" stroke="WHITE" strokeWidth="2.0" />
+                                                <Circle fx:id="mainMenuPlusCircle" fill="#fc7777" radius="16.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0">
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor></Circle>
+                                                <Line fx:id="mainMenuPlusHLine" endY="16.0" stroke="WHITE" strokeWidth="2.0" StackPane.alignment="CENTER">
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor></Line>
+                                                <Line fx:id="mainMenuPlusVLine" endX="16.0" stroke="WHITE" strokeWidth="2.0">
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor></Line>
                                              </children>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </StackPane>
                                        </children>
                                        <HBox.margin>
                                           <Insets left="7.0" />
                                        </HBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
-                                    <Button fx:id="mainMenuCenterButton" alignment="CENTER_RIGHT" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchingToTheAnalysisStartWindowForButton" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #FC7777;" text="Выбрать изображение" textFill="WHITE" wrapText="true" HBox.hgrow="NEVER">
+                                    <Button fx:id="mainMenuCenterButton" alignment="CENTER_RIGHT" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchingToTheAnalysisStartWindowForButton" prefHeight="40.0" prefWidth="92.0" style="-fx-background-color: #FC7777;" text="Выбрать изображение" textFill="WHITE" wrapText="true" HBox.hgrow="NEVER">
                                        <font>
-                                          <Font name="Arial Black" size="11.0" />
+                                          <Font name="Arial Black" size="10.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Button>
                                  </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </HBox>
                            </children>
                         </StackPane>
@@ -69,18 +91,27 @@
             </VBox>
             <VBox fx:id="mainMenuBottomVBox" alignment="CENTER" prefHeight="110.0" prefWidth="1942.0" spacing="5.0" VBox.vgrow="ALWAYS">
                <children>
-                  <TextField fx:id="mainMenuNameOfReportTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="320.0" promptText="Название отчёта" style="-fx-border-color: #FC7777; -fx-background-color: #FFFFFF; -fx-border-radius: 8px; -fx-border-width: 2px;">
+                  <TextField fx:id="mainMenuNameOfReportTextField" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="320.0" promptText="Название отчёта" style="-fx-border-color: #ADA5A5; -fx-background-color: #FFFFFF; -fx-border-radius: 8px; -fx-border-width: 2px;">
                      <font>
                         <Font size="10.0" />
-                     </font></TextField>
-                  <TextField fx:id="mainMenuNameOfPatientTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="320.0" promptText="ФИО пациента" style="-fx-border-color: #FC7777; -fx-border-radius: 8px; -fx-border-width: 2px; -fx-background-color: #FFFFFF;">
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor></TextField>
+                  <TextField fx:id="mainMenuNameOfPatientTextField" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="320.0" promptText="ФИО пациента" style="-fx-border-color: #ADA5A5; -fx-border-radius: 8px; -fx-border-width: 2px; -fx-background-color: #FFFFFF;">
                      <font>
                         <Font size="10.0" />
-                     </font></TextField>
-                  <Button fx:id="mainMenuStartAnalysisButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="140.0" style="-fx-background-color: #F3F3F3; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-border-color: #ADA5A5; -fx-background-radius: 5px;" text="Начать анализ" textAlignment="CENTER" textFill="#ada5a5">
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor></TextField>
+                  <Button fx:id="mainMenuStartAnalysisButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="150.0" style="-fx-background-color: #F3F3F3; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-border-color: #ADA5A5; -fx-background-radius: 5px;" text="Начать анализ" textAlignment="CENTER" textFill="#ada5a5">
                      <font>
                         <Font name="Arial Black" size="10.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
                   </Button>
                </children>
                <VBox.margin>
@@ -100,32 +131,47 @@
                     <children>
                         <ImageView fx:id="mainMenuIconImageView" fitHeight="30.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/logo-pathology-warden.png" />
+                                <Image url="@../../../images/logo-pathology-warden.png" />
                             </image>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
                         </ImageView>
                         <Label fx:id="mainMenuNameOfProjectLabel" prefHeight="30.0" prefWidth="56.0" text="Pathology Warden " textAlignment="CENTER" textFill="WHITE" wrapText="true">
                             <font>
                                 <Font name="Arial Black" size="10.0" />
                             </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
                         </Label>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="358.0" spacing="5.0" style="-fx-background-color: #FC7777;" HBox.hgrow="ALWAYS">
                     <children>
-                        <Button fx:id="mainMenuLoginButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="55.0" style="-fx-background-color: #FC7777; -fx-border-radius: 8px; -fx-border-width: 2px; -fx-border-color: #FFFFFF;" text="Вход" textFill="WHITE">
+                        <Button fx:id="mainMenuLoginButton" mnemonicParsing="false" onAction="#switchingToTheLoginWindow" prefHeight="30.0" prefWidth="55.0" style="-fx-background-color: #FC7777; -fx-border-radius: 8px; -fx-border-width: 2px; -fx-border-color: #FFFFFF;" text="Вход" textFill="WHITE">
                             <font>
                                 <Font name="Arial Black" size="10.0" />
                             </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                         </Button>
-                        <Button fx:id="mainMenuRegisterButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #FC7777; -fx-border-radius: 8px; -fx-border-width: 2px; -fx-border-color: #FFFFFF;" text="Регистрация" textFill="WHITE">
+                        <Button fx:id="mainMenuRegisterButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchingToTheRegistrationWindow" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #FC7777; -fx-border-radius: 8px; -fx-border-width: 2px; -fx-border-color: #FFFFFF;" text="Регистрация" textFill="WHITE">
                             <font>
                                 <Font name="Arial Black" size="10.0" />
                             </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                         </Button>
-                        <Button fx:id="mainMenuInfoButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #FC7777; -fx-border-radius: 100; -fx-border-width: 2px; -fx-border-color: #FFFFFF;" text="i" textFill="WHITE">
+                        <Button fx:id="mainMenuInfoButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchingToTheInformationWindow" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #FC7777; -fx-border-radius: 100; -fx-border-width: 2px; -fx-border-color: #FFFFFF;" text="i" textFill="WHITE">
                             <font>
                                 <Font name="Arial Bold" size="15.0" />
                             </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                         </Button>
                     </children>
                     <padding>

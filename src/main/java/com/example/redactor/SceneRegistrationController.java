@@ -1,8 +1,8 @@
 package com.example.redactor;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.sql.Connection;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -78,7 +78,7 @@ public class SceneRegistrationController {
     @FXML
     private void switchingToTheMainMenuForButton(ActionEvent event) throws IOException {
         currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-without-acc.fxml"));
         newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
@@ -86,7 +86,7 @@ public class SceneRegistrationController {
     @FXML
     private void switchingToTheMainMenuForNotButton(MouseEvent event) throws IOException {
         currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-without-acc.fxml"));
         newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
@@ -110,6 +110,18 @@ public class SceneRegistrationController {
             RegistrationSceneRegistrationLabel.getStyleClass().add("red");
             RegistrationSceneRegistrationLabel.setCursor(Cursor.HAND);
             isRegistrationSceneRegistrationLabelRed = true;
+        }
+    }
+
+    @FXML
+    private void registerNewAccount(MouseEvent event) throws IOException {
+        if(isRegistrationSceneRegistrationLabelRed) {
+            UserSession.addUser(RegistrationSceneLoginTextField.getText(), RegistrationSceneEmailTextField.getText(), RegistrationScenePasswordTextField.getText().hashCode(), RegistrationSceneFirstNameTextField.getText(), RegistrationSceneSecondNameTextField.getText(), RegistrationScenePatronymicTextField.getText());
+
+            currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-without-acc.fxml"));
+            newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+            currentStage.setScene(newScene);
         }
     }
 

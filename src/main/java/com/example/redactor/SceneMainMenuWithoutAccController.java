@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
-public class SceneMainMenuController {
+public class SceneMainMenuWithoutAccController {
 
     @FXML
     private BorderPane mainMenuBorderPane;
@@ -97,9 +97,9 @@ public class SceneMainMenuController {
         File selectedFile = fileChooser.showOpenDialog(currentStage);
         if(selectedFile != null) {
             Image image = new Image(selectedFile.toURI().toString());
-            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-without-acc.fxml"));
             newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
-            SceneStartAnalysisController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
+            SceneStartAnalysisWithoutAccController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().setImage(image);
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralAnchorPane().prefWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().fitWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
@@ -119,9 +119,9 @@ public class SceneMainMenuController {
         File selectedFile = fileChooser.showOpenDialog(currentStage);
         if(selectedFile != null) {
             Image image = new Image(selectedFile.toURI().toString());
-            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-without-acc.fxml"));
             Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
-            SceneStartAnalysisController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
+            SceneStartAnalysisWithoutAccController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().setImage(image);
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralAnchorPane().prefWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().fitWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
