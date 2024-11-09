@@ -141,6 +141,10 @@ public class SceneEndAnalysisWithAccController {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-my-documents.fxml"));
         newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        UserSession.getResearches();
+        SceneMyDocumentsController.createHBox();
+        SceneMyDocumentsController.currentSceneMyDocumentsController = fxmlLoader.getController();
+        ((SceneMyDocumentsController)(fxmlLoader.getController())).displayHBox();
         currentStage.setScene(newScene);
     }
 
@@ -164,7 +168,7 @@ public class SceneEndAnalysisWithAccController {
         File selectedFile = fileChooser.showOpenDialog(currentStage);
         if(selectedFile != null) {
             Image image = new Image(selectedFile.toURI().toString());
-            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-without-acc.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-with-acc.fxml"));
             Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
             SceneStartAnalysisWithAccController sceneStartAnalysisWithAccountController = fxmlLoader.getController();
             sceneStartAnalysisWithAccountController.getBeforeAnalysisGeneralImageView().setImage(image);

@@ -103,7 +103,6 @@ public class SceneLoginController {
                 FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-with-acc.fxml"));
                 newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
                 currentStage.setScene(newScene);
-                System.out.println(UserSession.getUserId());
             } else {
                 Alert alertOfLogin = new Alert(Alert.AlertType.ERROR);
                 alertOfLogin.setTitle("Ошибка");

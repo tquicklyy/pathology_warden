@@ -130,6 +130,10 @@ public class SceneMainMenuWithAccController {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-my-documents.fxml"));
         newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        UserSession.getResearches();
+        SceneMyDocumentsController.createHBox();
+        SceneMyDocumentsController.currentSceneMyDocumentsController = fxmlLoader.getController();
+        ((SceneMyDocumentsController)(fxmlLoader.getController())).displayHBox();
         currentStage.setScene(newScene);
     }
 

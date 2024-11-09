@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -120,6 +121,10 @@ public class SceneStartAnalysisWithAccController {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-my-documents.fxml"));
         newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        UserSession.getResearches();
+        SceneMyDocumentsController.createHBox();
+        SceneMyDocumentsController.currentSceneMyDocumentsController = fxmlLoader.getController();
+        ((SceneMyDocumentsController)(fxmlLoader.getController())).displayHBox();
         currentStage.setScene(newScene);
     }
 
@@ -139,6 +144,7 @@ public class SceneStartAnalysisWithAccController {
     @FXML
     private void startAnalysis(MouseEvent event) throws IOException {
         if(isBeforeAnalysisStartAnalysisButtonRed) {
+            String[] nameParts = beforeAnalysisNameOfPatientTextField.getText().split(" ");
             currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-end-analysis-with-acc.fxml"));
             Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
@@ -151,6 +157,8 @@ public class SceneStartAnalysisWithAccController {
 
             sceneEndAnalysisWithAccountController.getEndAnalysisGeneralAnchorPane().prefWidthProperty().bind(sceneEndAnalysisWithAccountController.getEndAnalysisBorderPane().widthProperty());
             sceneEndAnalysisWithAccountController.getEndAnalysisGeneralImageView().fitWidthProperty().bind(sceneEndAnalysisWithAccountController.getEndAnalysisBorderPane().widthProperty());
+
+            UserSession.addResearch(nameParts, beforeAnalysisNameOfReportTextField.getText());
 
             currentStage.setScene(newScene);
         }

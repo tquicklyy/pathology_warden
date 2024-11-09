@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,6 +14,11 @@ public class UserSession {
     private static int userId;
     private static Connection connOfUser;
     private static boolean isLogged;
+
+    public static HashMap<String, String> patientFirstName = new HashMap<>();
+    public static HashMap<String, String> patientLastName = new HashMap<>();
+    public static HashMap<String, String> patientPatronymicName = new HashMap<>();
+    public static ArrayList<String> nameOfReport = new ArrayList<>();
 
     public static boolean isIsLogged() {
         return isLogged;
@@ -73,4 +81,70 @@ public class UserSession {
         }
     }
 
+    public static void addResearch(String[] nameParts, String nameOfReport) {
+        String queryForDB = "INSERT INTO report (doctor, name, patient_first_name, patient_last_name, patient_patronymic_name, verdict, image, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
+        try {
+            String patient_last_name = nameParts[0];
+            String patient_first_name = nameParts[1];
+            String patient_patronymic = "";
+            for(int i = 2; i < nameParts.length; i++ ) {
+                patient_patronymic += nameParts[i];
+            }
+            String verdict = "Здоров";
+            String pathToImage = "\"C:\\Users\\abcd\\Pictures\\research_number_1.jpg\"";
+
+            PreparedStatement ps = connOfUser.prepareStatement(queryForDB);
+            ps.setInt(1, userId);
+            ps.setString(2, nameOfReport);
+            ps.setString(3, patient_first_name);
+            ps.setString(4, patient_last_name);
+            ps.setString(5, patient_patronymic);
+            ps.setString(6, verdict);
+            ps.setString(7, pathToImage);
+            ps.setObject(8, LocalDateTime.now());
+            ps.setObject(9, LocalDateTime.now());
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void getResearches() {
+        String queryForDB = "SELECT name, patient_first_name, patient_last_name, patient_patronymic_name FROM report WHERE report.doctor = ?";
+        try {
+            PreparedStatement ps = connOfUser.prepareStatement(queryForDB);
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            patientFirstName.clear();
+            patientLastName.clear();
+            patientPatronymicName.clear();
+            nameOfReport.clear();
+
+            String nameOfCurrentReport;
+
+            while(rs.next()){
+                nameOfCurrentReport = rs.getString("name");
+                patientFirstName.put(nameOfCurrentReport, rs.getString("patient_first_name"));
+                patientLastName.put(nameOfCurrentReport, rs.getString("patient_last_name"));
+                patientPatronymicName.put(nameOfCurrentReport, rs.getString("patient_patronymic_name"));
+                nameOfReport.add(nameOfCurrentReport);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteReport(String nameOfReport) {
+        String queryForDB = "DELETE FROM report WHERE name = ?";
+        try {
+            PreparedStatement ps = connOfUser.prepareStatement(queryForDB);
+            ps.setString(1, nameOfReport);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

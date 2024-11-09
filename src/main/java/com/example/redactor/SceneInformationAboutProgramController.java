@@ -55,7 +55,7 @@ public class SceneInformationAboutProgramController {
     private Label infoMenuNameOfProjectLabel;
 
     @FXML
-    private Button infoMenuRegisterButton;
+    private Button infoMenuBackButton;
 
     @FXML
     private TextFlow infoMenuSecondCenterTextFlow;
@@ -145,9 +145,9 @@ public class SceneInformationAboutProgramController {
 
                 infoMenuTopHBox.setPrefHeight(37);
 
-                infoMenuRegisterButton.setPrefHeight(30);
-                infoMenuRegisterButton.setPrefWidth(150);
-                infoMenuRegisterButton.setFont(Font.font("Arial Black", 10));
+                infoMenuBackButton.setPrefHeight(30);
+                infoMenuBackButton.setPrefWidth(150);
+                infoMenuBackButton.setFont(Font.font("Arial Black", 10));
 
             } else if (newValue.doubleValue() < 720) {
                 infoMenuIconImageView.setFitHeight(33);
@@ -159,9 +159,9 @@ public class SceneInformationAboutProgramController {
 
                 infoMenuTopHBox.setPrefHeight(40);
 
-                infoMenuRegisterButton.setPrefHeight(33);
-                infoMenuRegisterButton.setPrefWidth(160);
-                infoMenuRegisterButton.setFont(Font.font("Arial Black", 10.5));
+                infoMenuBackButton.setPrefHeight(33);
+                infoMenuBackButton.setPrefWidth(160);
+                infoMenuBackButton.setFont(Font.font("Arial Black", 10.5));
 
             } else if (newValue.doubleValue() < 830) {
                 infoMenuIconImageView.setFitHeight(36);
@@ -173,9 +173,9 @@ public class SceneInformationAboutProgramController {
 
                 infoMenuTopHBox.setPrefHeight(43);
 
-                infoMenuRegisterButton.setPrefHeight(36);
-                infoMenuRegisterButton.setPrefWidth(170);
-                infoMenuRegisterButton.setFont(Font.font("Arial Black", 11));
+                infoMenuBackButton.setPrefHeight(36);
+                infoMenuBackButton.setPrefWidth(170);
+                infoMenuBackButton.setFont(Font.font("Arial Black", 11));
 
             } else if (newValue.doubleValue() < 940) {
                 infoMenuIconImageView.setFitHeight(39);
@@ -187,9 +187,9 @@ public class SceneInformationAboutProgramController {
 
                 infoMenuTopHBox.setPrefHeight(46);
 
-                infoMenuRegisterButton.setPrefHeight(39);
-                infoMenuRegisterButton.setPrefWidth(180);
-                infoMenuRegisterButton.setFont(Font.font("Arial Black", 11.5));
+                infoMenuBackButton.setPrefHeight(39);
+                infoMenuBackButton.setPrefWidth(180);
+                infoMenuBackButton.setFont(Font.font("Arial Black", 11.5));
             } else {
                 infoMenuIconImageView.setFitHeight(42);
                 infoMenuIconImageView.setFitWidth(71);
@@ -200,9 +200,9 @@ public class SceneInformationAboutProgramController {
 
                 infoMenuTopHBox.setPrefHeight(49);
 
-                infoMenuRegisterButton.setPrefHeight(42);
-                infoMenuRegisterButton.setPrefWidth(190);
-                infoMenuRegisterButton.setFont(Font.font("Arial Black", 12));
+                infoMenuBackButton.setPrefHeight(42);
+                infoMenuBackButton.setPrefWidth(190);
+                infoMenuBackButton.setFont(Font.font("Arial Black", 12));
             }
         });
         infoMenuBorderPane.widthProperty().addListener((observable, oldValue, newValue) -> {
