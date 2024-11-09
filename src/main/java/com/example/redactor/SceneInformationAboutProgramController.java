@@ -55,7 +55,7 @@ public class SceneInformationAboutProgramController {
     private Label infoMenuNameOfProjectLabel;
 
     @FXML
-    private Button infoMenuRegisterButton;
+    private Button infoMenuBackButton;
 
     @FXML
     private TextFlow infoMenuSecondCenterTextFlow;
@@ -101,19 +101,31 @@ public class SceneInformationAboutProgramController {
 
     private Stage currentStage;
 
+    private Scene newScene;
+
     @FXML
     private void switchingToTheMainMenuForButton(ActionEvent event) throws IOException {
         currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
-        Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        FXMLLoader fxmlLoader;
+        if(!UserSession.isIsLogged()) {
+            fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-without-acc.fxml"));
+        } else {
+            fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-with-acc.fxml"));
+        }
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
 
     @FXML
     private void switchingToTheMainMenuForNotButton(MouseEvent event) throws IOException {
         currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
-        Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        FXMLLoader fxmlLoader;
+        if(!UserSession.isIsLogged()) {
+            fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-without-acc.fxml"));
+        } else {
+            fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-with-acc.fxml"));
+        }
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
 
@@ -133,9 +145,9 @@ public class SceneInformationAboutProgramController {
 
                 infoMenuTopHBox.setPrefHeight(37);
 
-                infoMenuRegisterButton.setPrefHeight(30);
-                infoMenuRegisterButton.setPrefWidth(150);
-                infoMenuRegisterButton.setFont(Font.font("Arial Black", 10));
+                infoMenuBackButton.setPrefHeight(30);
+                infoMenuBackButton.setPrefWidth(150);
+                infoMenuBackButton.setFont(Font.font("Arial Black", 10));
 
             } else if (newValue.doubleValue() < 720) {
                 infoMenuIconImageView.setFitHeight(33);
@@ -147,50 +159,50 @@ public class SceneInformationAboutProgramController {
 
                 infoMenuTopHBox.setPrefHeight(40);
 
-                infoMenuRegisterButton.setPrefHeight(33);
-                infoMenuRegisterButton.setPrefWidth(160);
-                infoMenuRegisterButton.setFont(Font.font("Arial Black", 10.5));
+                infoMenuBackButton.setPrefHeight(33);
+                infoMenuBackButton.setPrefWidth(160);
+                infoMenuBackButton.setFont(Font.font("Arial Black", 10.5));
 
             } else if (newValue.doubleValue() < 830) {
                 infoMenuIconImageView.setFitHeight(36);
                 infoMenuIconImageView.setFitWidth(61);
 
                 infoMenuNameOfProjectLabel.setPrefHeight(36);
-                infoMenuNameOfProjectLabel.setPrefWidth(67);
+                infoMenuNameOfProjectLabel.setPrefWidth(66);
                 infoMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 11));
 
                 infoMenuTopHBox.setPrefHeight(43);
 
-                infoMenuRegisterButton.setPrefHeight(36);
-                infoMenuRegisterButton.setPrefWidth(170);
-                infoMenuRegisterButton.setFont(Font.font("Arial Black", 11));
+                infoMenuBackButton.setPrefHeight(36);
+                infoMenuBackButton.setPrefWidth(170);
+                infoMenuBackButton.setFont(Font.font("Arial Black", 11));
 
             } else if (newValue.doubleValue() < 940) {
                 infoMenuIconImageView.setFitHeight(39);
                 infoMenuIconImageView.setFitWidth(66);
 
                 infoMenuNameOfProjectLabel.setPrefHeight(39);
-                infoMenuNameOfProjectLabel.setPrefWidth(72);
+                infoMenuNameOfProjectLabel.setPrefWidth(71);
                 infoMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 11.5));
 
                 infoMenuTopHBox.setPrefHeight(46);
 
-                infoMenuRegisterButton.setPrefHeight(39);
-                infoMenuRegisterButton.setPrefWidth(180);
-                infoMenuRegisterButton.setFont(Font.font("Arial Black", 11.5));
+                infoMenuBackButton.setPrefHeight(39);
+                infoMenuBackButton.setPrefWidth(180);
+                infoMenuBackButton.setFont(Font.font("Arial Black", 11.5));
             } else {
                 infoMenuIconImageView.setFitHeight(42);
                 infoMenuIconImageView.setFitWidth(71);
 
                 infoMenuNameOfProjectLabel.setPrefHeight(42);
-                infoMenuNameOfProjectLabel.setPrefWidth(77);
+                infoMenuNameOfProjectLabel.setPrefWidth(76);
                 infoMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 12));
 
                 infoMenuTopHBox.setPrefHeight(49);
 
-                infoMenuRegisterButton.setPrefHeight(42);
-                infoMenuRegisterButton.setPrefWidth(190);
-                infoMenuRegisterButton.setFont(Font.font("Arial Black", 12));
+                infoMenuBackButton.setPrefHeight(42);
+                infoMenuBackButton.setPrefWidth(190);
+                infoMenuBackButton.setFont(Font.font("Arial Black", 12));
             }
         });
         infoMenuBorderPane.widthProperty().addListener((observable, oldValue, newValue) -> {

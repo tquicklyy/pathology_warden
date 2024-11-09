@@ -6,7 +6,6 @@ import java.io.IOException;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +27,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class SceneEndAnalysisWithoutAccountController {
+public class SceneEndAnalysisWithoutAccController {
 
     @FXML
     private Button EndAnalysisAddDotsButton;
@@ -39,7 +38,6 @@ public class SceneEndAnalysisWithoutAccountController {
 
     @FXML
     private BorderPane EndAnalysisBorderPane;
-
 
     @FXML
     private Label EndAnalysisCenterTopLabel;
@@ -117,6 +115,8 @@ public class SceneEndAnalysisWithoutAccountController {
     @FXML
     private HBox EndAnalysisTopHBox;
 
+    private Scene newScene;
+
     private Stage currentStage;
 
     private Timeline timelineForAnimationOpenCloseButton = new Timeline();
@@ -134,8 +134,8 @@ public class SceneEndAnalysisWithoutAccountController {
     @FXML
     private void switchingToTheMainMenu(MouseEvent event) throws IOException {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
-        Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-without-acc.fxml"));
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
 
@@ -143,7 +143,23 @@ public class SceneEndAnalysisWithoutAccountController {
     private void switchingToTheInformationWindow(ActionEvent event) throws IOException {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-information-about-program.fxml"));
-        Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        currentStage.setScene(newScene);
+    }
+
+    @FXML
+    public void switchingToTheLoginWindow(ActionEvent event) throws  IOException {
+        currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-login.fxml"));
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        currentStage.setScene(newScene);
+    }
+
+    @FXML
+    public void switchingToTheRegistrationWindow(ActionEvent event) throws  IOException {
+        currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-registration.fxml"));
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
 
@@ -159,9 +175,9 @@ public class SceneEndAnalysisWithoutAccountController {
         File selectedFile = fileChooser.showOpenDialog(currentStage);
         if(selectedFile != null) {
             Image image = new Image(selectedFile.toURI().toString());
-            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-without-account.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-without-acc.fxml"));
             Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
-            SceneStartAnalysisWithoutAccountController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
+            SceneStartAnalysisWithoutAccController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().setImage(image);
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralAnchorPane().prefWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
             sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().fitWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
@@ -442,7 +458,7 @@ public class SceneEndAnalysisWithoutAccountController {
                 EndAnalysisRegisterButton.setFont(Font.font("Arial Black", 11));
 
                 EndAnalysisNameOfProjectLabel.setPrefHeight(36);
-                EndAnalysisNameOfProjectLabel.setPrefWidth(67);
+                EndAnalysisNameOfProjectLabel.setPrefWidth(66);
                 EndAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 11));
 
                 EndAnalysisStartAnalysisButton.setPrefHeight(26);
@@ -532,7 +548,7 @@ public class SceneEndAnalysisWithoutAccountController {
                 EndAnalysisRegisterButton.setFont(Font.font("Arial Black", 11.5));
 
                 EndAnalysisNameOfProjectLabel.setPrefHeight(39);
-                EndAnalysisNameOfProjectLabel.setPrefWidth(72);
+                EndAnalysisNameOfProjectLabel.setPrefWidth(71);
                 EndAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 11.5));
 
                 EndAnalysisStartAnalysisButton.setPrefHeight(27);
@@ -622,7 +638,7 @@ public class SceneEndAnalysisWithoutAccountController {
                 EndAnalysisRegisterButton.setFont(Font.font("Arial Black", 12));
 
                 EndAnalysisNameOfProjectLabel.setPrefHeight(42);
-                EndAnalysisNameOfProjectLabel.setPrefWidth(77);
+                EndAnalysisNameOfProjectLabel.setPrefWidth(76);
                 EndAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 12));
 
                 EndAnalysisStartAnalysisButton.setPrefHeight(28);

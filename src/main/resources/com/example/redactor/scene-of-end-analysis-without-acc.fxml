@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="EndAnalysisBorderPane" prefHeight="500.0" prefWidth="740.0" styleClass="root" stylesheets="@../../../cssStyle/endAnalysisBorderPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.redactor.SceneEndAnalysisWithoutAccountController">
+<BorderPane fx:id="EndAnalysisBorderPane" prefHeight="500.0" prefWidth="740.0" styleClass="root" stylesheets="@../../../cssStyle/endAnalysisBorderPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.redactor.SceneEndAnalysisWithoutAccController">
     <top>
         <HBox fx:id="EndAnalysisTopHBox" minWidth="-Infinity" prefHeight="37.0" prefWidth="743.0" style="-fx-background-color: #FC7777;" BorderPane.alignment="CENTER">
             <children>
@@ -41,7 +41,7 @@
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="358.0" spacing="5.0" style="-fx-background-color: #FC7777;" HBox.hgrow="ALWAYS">
                     <children>
-                        <Button fx:id="EndAnalysisLoginButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="55.0" style="-fx-background-color: #FC7777; -fx-border-radius: 8px; -fx-border-width: 2px; -fx-border-color: #FFFFFF;" text="Вход" textFill="WHITE">
+                        <Button fx:id="EndAnalysisLoginButton" mnemonicParsing="false" onAction="#switchingToTheLoginWindow" prefHeight="30.0" prefWidth="55.0" style="-fx-background-color: #FC7777; -fx-border-radius: 8px; -fx-border-width: 2px; -fx-border-color: #FFFFFF;" text="Вход" textFill="WHITE">
                             <font>
                                 <Font name="Arial Black" size="10.0" />
                             </font>
@@ -49,7 +49,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </Button>
-                        <Button fx:id="EndAnalysisRegisterButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #FC7777; -fx-border-radius: 8px; -fx-border-width: 2px; -fx-border-color: #FFFFFF;" text="Регистрация" textFill="WHITE">
+                        <Button fx:id="EndAnalysisRegisterButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchingToTheRegistrationWindow" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #FC7777; -fx-border-radius: 8px; -fx-border-width: 2px; -fx-border-color: #FFFFFF;" text="Регистрация" textFill="WHITE">
                             <font>
                                 <Font name="Arial Black" size="10.0" />
                             </font>

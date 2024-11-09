@@ -1,11 +1,9 @@
 package com.example.redactor;
 
-import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,7 +24,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
-public class SceneMainMenuController {
+public class SceneMainMenuWithAccController {
 
     @FXML
     private BorderPane mainMenuBorderPane;
@@ -44,13 +42,13 @@ public class SceneMainMenuController {
     private AnchorPane mainMenuGeneralAnchorPane;
 
     @FXML
+    private Button mainMenuMyDocumentsButton;
+
+    @FXML
     private ImageView mainMenuIconImageView;
 
     @FXML
     private Button mainMenuInfoButton;
-
-    @FXML
-    private Button mainMenuLoginButton;
 
     @FXML
     private TextField mainMenuNameOfPatientTextField;
@@ -74,9 +72,6 @@ public class SceneMainMenuController {
     private Line mainMenuPlusHLine;
 
     @FXML
-    private Button mainMenuRegisterButton;
-
-    @FXML
     private Button mainMenuStartAnalysisButton;
 
     @FXML
@@ -84,24 +79,26 @@ public class SceneMainMenuController {
 
     private Stage currentStage;
 
+    private Scene newScene;
+
     @FXML
     public void switchingToTheAnalysisStartWindowForNotButton(MouseEvent event) throws IOException {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Выберите изображение");
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.png")
+                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.png", "*gif")
         );
 
         File selectedFile = fileChooser.showOpenDialog(currentStage);
         if(selectedFile != null) {
             Image image = new Image(selectedFile.toURI().toString());
-            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-without-account.fxml"));
-            Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
-            SceneStartAnalysisWithoutAccountController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
-            sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().setImage(image);
-            sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralAnchorPane().prefWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
-            sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().fitWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-with-acc.fxml"));
+            newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+            SceneStartAnalysisWithAccController sceneStartAnalysisWithAccountController = fxmlLoader.getController();
+            sceneStartAnalysisWithAccountController.getBeforeAnalysisGeneralImageView().setImage(image);
+            sceneStartAnalysisWithAccountController.getBeforeAnalysisGeneralAnchorPane().prefWidthProperty().bind(sceneStartAnalysisWithAccountController.getBeforeAnalysisBorderPane().widthProperty());
+            sceneStartAnalysisWithAccountController.getBeforeAnalysisGeneralImageView().fitWidthProperty().bind(sceneStartAnalysisWithAccountController.getBeforeAnalysisBorderPane().widthProperty());
             currentStage.setScene(newScene);
         }
     }
@@ -118,21 +115,33 @@ public class SceneMainMenuController {
         File selectedFile = fileChooser.showOpenDialog(currentStage);
         if(selectedFile != null) {
             Image image = new Image(selectedFile.toURI().toString());
-            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-without-account.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-start-analysis-with-acc.fxml"));
             Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
-            SceneStartAnalysisWithoutAccountController sceneStartAnalysisWithoutAccountController = fxmlLoader.getController();
-            sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().setImage(image);
-            sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralAnchorPane().prefWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
-            sceneStartAnalysisWithoutAccountController.getBeforeAnalysisGeneralImageView().fitWidthProperty().bind(sceneStartAnalysisWithoutAccountController.getBeforeAnalysisBorderPane().widthProperty());
+            SceneStartAnalysisWithAccController sceneStartAnalysisWithAccountController = fxmlLoader.getController();
+            sceneStartAnalysisWithAccountController.getBeforeAnalysisGeneralImageView().setImage(image);
+            sceneStartAnalysisWithAccountController.getBeforeAnalysisGeneralAnchorPane().prefWidthProperty().bind(sceneStartAnalysisWithAccountController.getBeforeAnalysisBorderPane().widthProperty());
+            sceneStartAnalysisWithAccountController.getBeforeAnalysisGeneralImageView().fitWidthProperty().bind(sceneStartAnalysisWithAccountController.getBeforeAnalysisBorderPane().widthProperty());
             currentStage.setScene(newScene);
         }
+    }
+
+    @FXML
+    public void switchingToTheMyDocumentsWindow(ActionEvent event) throws  IOException {
+        currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-my-documents.fxml"));
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        UserSession.getResearches();
+        SceneMyDocumentsController.createHBox();
+        SceneMyDocumentsController.currentSceneMyDocumentsController = fxmlLoader.getController();
+        ((SceneMyDocumentsController)(fxmlLoader.getController())).displayHBox();
+        currentStage.setScene(newScene);
     }
 
     @FXML
     private void switchingToTheInformationWindow(ActionEvent event) throws IOException {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-information-about-program.fxml"));
-        Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
 
@@ -171,13 +180,9 @@ public class SceneMainMenuController {
                 mainMenuInfoButton.setPrefWidth(30);
                 mainMenuInfoButton.setFont(Font.font("Arial", FontWeight.BOLD, 15));
 
-                mainMenuLoginButton.setPrefHeight(30);
-                mainMenuLoginButton.setPrefWidth(55);
-                mainMenuLoginButton.setFont(Font.font("Arial Black", 10));
-
-                mainMenuRegisterButton.setPrefHeight(30);
-                mainMenuRegisterButton.setPrefWidth(100);
-                mainMenuRegisterButton.setFont(Font.font("Arial Black", 10));
+                mainMenuMyDocumentsButton.setPrefHeight(30);
+                mainMenuMyDocumentsButton.setPrefWidth(110);
+                mainMenuMyDocumentsButton.setFont(Font.font("Arial Black", 10));
 
                 mainMenuNameOfPatientTextField.setPrefHeight(24);
                 mainMenuNameOfPatientTextField.setPrefWidth(320);
@@ -209,6 +214,10 @@ public class SceneMainMenuController {
                 mainMenuTopHBox.setPrefHeight(40);
                 mainMenuTopHBox.setPrefWidth(743);
 
+                mainMenuMyDocumentsButton.setPrefHeight(33);
+                mainMenuMyDocumentsButton.setPrefWidth(120);
+                mainMenuMyDocumentsButton.setFont(Font.font("Arial Black", 10.5));
+
                 mainMenuPlusAnchorPane.setPrefHeight(40);
                 mainMenuPlusAnchorPane.setPrefWidth(40);
 
@@ -225,14 +234,6 @@ public class SceneMainMenuController {
                 mainMenuInfoButton.setPrefHeight(33);
                 mainMenuInfoButton.setPrefWidth(33);
                 mainMenuInfoButton.setFont(Font.font("Arial", FontWeight.BOLD, 15.5));
-
-                mainMenuLoginButton.setPrefHeight(33);
-                mainMenuLoginButton.setPrefWidth(60);
-                mainMenuLoginButton.setFont(Font.font("Arial Black", 10.5));
-
-                mainMenuRegisterButton.setPrefHeight(33);
-                mainMenuRegisterButton.setPrefWidth(110);
-                mainMenuRegisterButton.setFont(Font.font("Arial Black", 10.5));
 
                 mainMenuNameOfPatientTextField.setPrefHeight(25);
                 mainMenuNameOfPatientTextField.setPrefWidth(420);
@@ -266,6 +267,10 @@ public class SceneMainMenuController {
                 mainMenuCenterHBox.setPrefHeight(66);
                 mainMenuCenterHBox.setPrefWidth(232);
 
+                mainMenuMyDocumentsButton.setPrefHeight(36);
+                mainMenuMyDocumentsButton.setPrefWidth(130);
+                mainMenuMyDocumentsButton.setFont(Font.font("Arial Black", 11));
+
                 mainMenuTopHBox.setPrefHeight(43);
                 mainMenuTopHBox.setPrefWidth(743);
 
@@ -286,20 +291,12 @@ public class SceneMainMenuController {
                 mainMenuInfoButton.setPrefWidth(36);
                 mainMenuInfoButton.setFont(Font.font("Arial", FontWeight.BOLD, 16));
 
-                mainMenuLoginButton.setPrefHeight(36);
-                mainMenuLoginButton.setPrefWidth(65);
-                mainMenuLoginButton.setFont(Font.font("Arial Black", 11));
-
-                mainMenuRegisterButton.setPrefHeight(36);
-                mainMenuRegisterButton.setPrefWidth(120);
-                mainMenuRegisterButton.setFont(Font.font("Arial Black", 11));
-
                 mainMenuNameOfPatientTextField.setPrefHeight(26);
                 mainMenuNameOfPatientTextField.setPrefWidth(520);
                 mainMenuNameOfPatientTextField.setFont(Font.font("System", 11));
 
                 mainMenuNameOfProjectLabel.setPrefHeight(36);
-                mainMenuNameOfProjectLabel.setPrefWidth(67);
+                mainMenuNameOfProjectLabel.setPrefWidth(66);
                 mainMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 11));
 
                 mainMenuNameOfReportTextField.setPrefHeight(26);
@@ -318,6 +315,10 @@ public class SceneMainMenuController {
 
                 mainMenuPlusHLine.setEndY(26);
                 mainMenuPlusHLine.setStrokeWidth(3);
+
+                mainMenuMyDocumentsButton.setPrefHeight(39);
+                mainMenuMyDocumentsButton.setPrefWidth(140);
+                mainMenuMyDocumentsButton.setFont(Font.font("Arial Black", 11.5));
 
                 mainMenuCenterButton.setPrefHeight(70);
                 mainMenuCenterButton.setPrefWidth(213);
@@ -346,20 +347,12 @@ public class SceneMainMenuController {
                 mainMenuInfoButton.setPrefWidth(39);
                 mainMenuInfoButton.setFont(Font.font("Arial", FontWeight.BOLD, 16.5));
 
-                mainMenuLoginButton.setPrefHeight(39);
-                mainMenuLoginButton.setPrefWidth(70);
-                mainMenuLoginButton.setFont(Font.font("Arial Black", 11.5));
-
-                mainMenuRegisterButton.setPrefHeight(39);
-                mainMenuRegisterButton.setPrefWidth(130);
-                mainMenuRegisterButton.setFont(Font.font("Arial Black", 11.5));
-
                 mainMenuNameOfPatientTextField.setPrefHeight(27);
                 mainMenuNameOfPatientTextField.setPrefWidth(625);
                 mainMenuNameOfPatientTextField.setFont(Font.font("System", 11.5));
 
                 mainMenuNameOfProjectLabel.setPrefHeight(39);
-                mainMenuNameOfProjectLabel.setPrefWidth(72);
+                mainMenuNameOfProjectLabel.setPrefWidth(71);
                 mainMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 11.5));
 
                 mainMenuNameOfReportTextField.setPrefHeight(27);
@@ -381,6 +374,10 @@ public class SceneMainMenuController {
                 mainMenuCenterHBox.setPrefHeight(80);
                 mainMenuCenterHBox.setPrefWidth(325);
 
+                mainMenuMyDocumentsButton.setPrefHeight(42);
+                mainMenuMyDocumentsButton.setPrefWidth(150);
+                mainMenuMyDocumentsButton.setFont(Font.font("Arial Black", 12));
+
                 mainMenuTopHBox.setPrefHeight(49);
                 mainMenuTopHBox.setPrefWidth(743);
 
@@ -401,20 +398,12 @@ public class SceneMainMenuController {
                 mainMenuInfoButton.setPrefWidth(42);
                 mainMenuInfoButton.setFont(Font.font("Arial", FontWeight.BOLD, 17));
 
-                mainMenuLoginButton.setPrefHeight(42);
-                mainMenuLoginButton.setPrefWidth(75);
-                mainMenuLoginButton.setFont(Font.font("Arial Black", FontWeight.BOLD, 12));
-
-                mainMenuRegisterButton.setPrefHeight(42);
-                mainMenuRegisterButton.setPrefWidth(142);
-                mainMenuRegisterButton.setFont(Font.font("Arial Black", 12));
-
                 mainMenuNameOfPatientTextField.setPrefHeight(28);
                 mainMenuNameOfPatientTextField.setPrefWidth(728);
                 mainMenuNameOfPatientTextField.setFont(Font.font("System", 12));
 
                 mainMenuNameOfProjectLabel.setPrefHeight(42);
-                mainMenuNameOfProjectLabel.setPrefWidth(77);
+                mainMenuNameOfProjectLabel.setPrefWidth(76);
                 mainMenuNameOfProjectLabel.setFont(Font.font("Arial Black", 12));
 
                 mainMenuNameOfReportTextField.setPrefHeight(28);

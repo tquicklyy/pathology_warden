@@ -28,13 +28,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SceneStartAnalysisWithoutAccountController {
-    private final List<List<Circle>> pointsList = new ArrayList<>();
-    private final List<List<Line>> linesList = new ArrayList<>(); // Список списков для хранения линий
-    private final int[] numPointsPerArea = {4, 5, 3, 3, 3}; // Количество точек для каждой области
-    private final int numAreas = numPointsPerArea.length; // Количество областей
-    private double x;
-    private double y;
+public class SceneStartAnalysisWithoutAccController {
 
     public BorderPane getBeforeAnalysisBorderPane() {
         return beforeAnalysisBorderPane;
@@ -95,13 +89,15 @@ public class SceneStartAnalysisWithoutAccountController {
 
     private Stage currentStage;
 
+    private Scene newScene;
+
     private boolean isBeforeAnalysisStartAnalysisButtonRed = false;
 
     @FXML
     private void switchingToTheMainMenu(MouseEvent event) throws IOException {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu.fxml"));
-        Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-without-acc.fxml"));
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
 
@@ -109,7 +105,23 @@ public class SceneStartAnalysisWithoutAccountController {
     private void switchingToTheInformationWindow(ActionEvent event) throws IOException {
         currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-information-about-program.fxml"));
-        Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        currentStage.setScene(newScene);
+    }
+
+    @FXML
+    public void switchingToTheLoginWindow(ActionEvent event) throws  IOException {
+        currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-login.fxml"));
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+        currentStage.setScene(newScene);
+    }
+
+    @FXML
+    public void switchingToTheRegistrationWindow(ActionEvent event) throws  IOException {
+        currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-registration.fxml"));
+        newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
         currentStage.setScene(newScene);
     }
 
@@ -143,11 +155,11 @@ public class SceneStartAnalysisWithoutAccountController {
     @FXML
     private void startAnalysis(MouseEvent event) throws IOException {
         if(isBeforeAnalysisStartAnalysisButtonRed) {
-            currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-end-analysis-without-account.fxml"));
+            currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-of-end-analysis-without-acc.fxml"));
             Scene newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
 
-            SceneEndAnalysisWithoutAccountController sceneEndAnalysisWithoutAccountController = fxmlLoader.getController();
+            SceneEndAnalysisWithoutAccController sceneEndAnalysisWithoutAccountController = fxmlLoader.getController();
             sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView().setImage(beforeAnalysisGeneralImageView.getImage());
 
             sceneEndAnalysisWithoutAccountController.getEndAnalysisNameOfReportLabel().setText(beforeAnalysisNameOfReportTextField.getText());
@@ -157,92 +169,6 @@ public class SceneStartAnalysisWithoutAccountController {
             sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView().fitWidthProperty().bind(sceneEndAnalysisWithoutAccountController.getEndAnalysisBorderPane().widthProperty());
 
             currentStage.setScene(newScene);
-            createAreas(sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView());
-            for (int i = 0; i < numAreas; i++) {
-                for (Circle point : pointsList.get(i)) {
-                    int finalI = i;
-                    point.setOnMouseDragged(ev -> handlePointDrag(ev, sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralImageView(),finalI));
-                }
-            }
-            pointsList.forEach(el->sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralAnchorPane().getChildren().addAll(el));
-            linesList.forEach(el->sceneEndAnalysisWithoutAccountController.getEndAnalysisGeneralAnchorPane().getChildren().addAll(el));
-        }
-    }
-    private void createPoints(List<Circle> points,List<Line> lines,int numPoints,ImageView view) {
-        var bounds = view.getBoundsInLocal();
-        this.x  = bounds.getWidth();
-        this.y  = bounds.getHeight();
-        //по углам
-//        points.add(createPoint(view, 0, 0));
-//        points.add(createPoint(view, x, 0));
-//        points.add(createPoint(view, x, y));
-//        points.add(createPoint(view, 0,y));
-        for(int i=0;i<numPoints;i++) {
-            points.add(createPoint(view, Math.random()*101, Math.random()*101));
-        }
-        createLines(points,lines);
-    }
-    private Circle createPoint(ImageView view, double x1, double y1) {
-        var sceneCoordinates = view.localToParent(x1, y1);
-        Circle point = new Circle(sceneCoordinates.getX(), sceneCoordinates.getY(), 5);
-        point.setFill(Color.RED);
-        return point;
-    }
-    private void createLines(List<Circle> points, List<Line> lines) {
-        for (int i = 0; i < points.size(); i++) {
-            lines.add(new Line(points.get(i).getCenterX(), points.get(i).getCenterY(),
-                    points.get((i + 1) % points.size()).getCenterX(), points.get((i + 1) % points.size()).getCenterY()));
-        }
-        for (Line line : lines) {
-            line.setStroke(Color.RED);
-        }
-    }
-    private void handlePointDrag(MouseEvent event, ImageView view, int areaIndex) {
-        Circle point = (Circle) event.getSource();
-
-        // Получаем координаты точки относительно изображения
-        double x1 = event.getX();
-        double y1 = event.getY();
-
-        // Получаем координаты точки относительно сцены
-        var sceneCoordinates = view.localToParent(x1, y1);
-
-        // Получаем смещение от предыдущего положения
-        double xOffset = sceneCoordinates.getX() - point.getCenterX();
-        double yOffset = sceneCoordinates.getY() - point.getCenterY();
-
-        // Преобразуем координаты точки в координаты ImageView
-        var imageViewCoordinates = view.parentToLocal(sceneCoordinates.getX(), sceneCoordinates.getY());
-
-        // Проверяем, находится ли точка в пределах изображения
-        if (imageViewCoordinates.getX() >= 0 && imageViewCoordinates.getX() <= x &&
-                imageViewCoordinates.getY() >= 0 && imageViewCoordinates.getY() <= y) {
-            // Устанавливаем новые координаты точки, учитывая смещение
-            point.setCenterX(point.getCenterX() + xOffset);
-            point.setCenterY(point.getCenterY() + yOffset);
-        }
-        // Обновляем линии после перемещения
-        updateLines(pointsList.get(areaIndex), linesList.get(areaIndex));
-    }
-
-    // Метод для обновления позиций линий
-    private void updateLines(List<Circle> points, List<Line> lines) {
-        // Обновляем каждую линию, соединяющую пары точек
-        for (int i = 0; i < lines.size(); i++) {
-            Line line = lines.get(i);
-            line.setStartX(points.get(i).getCenterX());
-            line.setStartY(points.get(i).getCenterY());
-            line.setEndX(points.get((i + 1) % points.size()).getCenterX()); // Циклический сдвиг
-            line.setEndY(points.get((i + 1) % points.size()).getCenterY());
-        }
-    }
-    private void createAreas(ImageView view) {
-        for (int i = 0; i < numAreas; i++) {
-            List<Circle> points = new ArrayList<>();
-            List<Line> lines = new ArrayList<>();
-            createPoints(points, lines,numPointsPerArea[i],view);
-            pointsList.add(points);
-            linesList.add(lines);
         }
     }
 
@@ -342,6 +268,7 @@ public class SceneStartAnalysisWithoutAccountController {
                 beforeAnalysisForPhotoSelectionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 11.5));
 
                 beforeAnalysisCameraForPhotoSelectionImageView.setFitWidth(21.5);
+
             } else if (newValue.intValue() < 830) {
                 beforeAnalysisTopHBox.setPrefHeight(43);
                 beforeAnalysisTopHBox.setPrefWidth(743);
@@ -373,7 +300,7 @@ public class SceneStartAnalysisWithoutAccountController {
                 beforeAnalysisNameOfPatientTextField.setFont(Font.font("System", 11));
 
                 beforeAnalysisNameOfProjectLabel.setPrefHeight(36);
-                beforeAnalysisNameOfProjectLabel.setPrefWidth(67);
+                beforeAnalysisNameOfProjectLabel.setPrefWidth(66);
                 beforeAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 11));
 
                 beforeAnalysisNameOfReportTextField.setPrefHeight(26);
@@ -388,6 +315,7 @@ public class SceneStartAnalysisWithoutAccountController {
                 beforeAnalysisForPhotoSelectionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 12));
 
                 beforeAnalysisCameraForPhotoSelectionImageView.setFitWidth(22);
+
             } else if (newValue.intValue() < 940) {
                 beforeAnalysisTopHBox.setPrefHeight(46);
                 beforeAnalysisTopHBox.setPrefWidth(743);
@@ -419,7 +347,7 @@ public class SceneStartAnalysisWithoutAccountController {
                 beforeAnalysisNameOfPatientTextField.setFont(Font.font("System", 11.5));
 
                 beforeAnalysisNameOfProjectLabel.setPrefHeight(39);
-                beforeAnalysisNameOfProjectLabel.setPrefWidth(72);
+                beforeAnalysisNameOfProjectLabel.setPrefWidth(71);
                 beforeAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 11.5));
 
                 beforeAnalysisNameOfReportTextField.setPrefHeight(27);
@@ -434,6 +362,7 @@ public class SceneStartAnalysisWithoutAccountController {
                 beforeAnalysisForPhotoSelectionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 12.5));
 
                 beforeAnalysisCameraForPhotoSelectionImageView.setFitWidth(22.5);
+
             } else {
                 beforeAnalysisTopHBox.setPrefHeight(49);
                 beforeAnalysisTopHBox.setPrefWidth(743);
@@ -465,7 +394,7 @@ public class SceneStartAnalysisWithoutAccountController {
                 beforeAnalysisNameOfPatientTextField.setFont(Font.font("System", 12));
 
                 beforeAnalysisNameOfProjectLabel.setPrefHeight(42);
-                beforeAnalysisNameOfProjectLabel.setPrefWidth(77);
+                beforeAnalysisNameOfProjectLabel.setPrefWidth(76);
                 beforeAnalysisNameOfProjectLabel.setFont(Font.font("Arial Black", 12));
 
                 beforeAnalysisNameOfReportTextField.setPrefHeight(28);
@@ -480,6 +409,7 @@ public class SceneStartAnalysisWithoutAccountController {
                 beforeAnalysisForPhotoSelectionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 13));
 
                 beforeAnalysisCameraForPhotoSelectionImageView.setFitWidth(23);
+
             }
         });
 
