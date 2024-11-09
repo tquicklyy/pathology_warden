@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -39,7 +40,7 @@ public class SceneLoginController {
     private Label LoginSceneCenterRightLabel;
 
     @FXML
-    private TextField LoginSceneEmailTextField;
+    private TextField LoginSceneUserNameOrEmailTextField;
 
     @FXML
     private ImageView LoginSceneIconImageView;
@@ -86,7 +87,6 @@ public class SceneLoginController {
         currentStage.setScene(newScene);
     }
 
-
     @FXML
     private void switchingToTheRegistrationWindow(MouseEvent event) throws IOException {
         currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -95,8 +95,27 @@ public class SceneLoginController {
         currentStage.setScene(newScene);
     }
 
+    @FXML
+    private void loginIntoAccount(MouseEvent event) throws IOException {
+        if(isLoginSceneRegistrationLabelRed) {
+            if(UserSession.getUserIdByLoginEmailPassword(LoginSceneUserNameOrEmailTextField.getText(), LoginScenePasswordTextField.getText())) {
+                currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-with-acc.fxml"));
+                newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
+                currentStage.setScene(newScene);
+                System.out.println(UserSession.getUserId());
+            } else {
+                Alert alertOfLogin = new Alert(Alert.AlertType.ERROR);
+                alertOfLogin.setTitle("Ошибка");
+                alertOfLogin.setHeaderText("Ошибка входа в аккаунт");
+                alertOfLogin.setContentText("Такой пользователь не найден или введены некорректные данные");
+                alertOfLogin.showAndWait();
+            }
+        }
+    }
+
     private void changingLoginSceneRegistrationLabel() {
-        if(LoginSceneEmailTextField.getText().isEmpty() || LoginScenePasswordTextField.getText().isEmpty()) {
+        if(LoginSceneUserNameOrEmailTextField.getText().isEmpty() || LoginScenePasswordTextField.getText().isEmpty()) {
             LoginSceneLoginLabel.getStyleClass().clear();
             LoginSceneLoginLabel.getStyleClass().add("gray");
             LoginSceneLoginLabel.setCursor(Cursor.DEFAULT);
@@ -129,9 +148,9 @@ public class SceneLoginController {
                 LoginSceneCenterLabel.setPrefWidth(367);
                 LoginSceneCenterLabel.setFont(Font.font("Arial", FontWeight.BOLD,29));
 
-                LoginSceneEmailTextField.setPrefHeight(30);
-                LoginSceneEmailTextField.setPrefWidth(367);
-                LoginSceneEmailTextField.setFont(Font.font("System",12));
+                LoginSceneUserNameOrEmailTextField.setPrefHeight(30);
+                LoginSceneUserNameOrEmailTextField.setPrefWidth(367);
+                LoginSceneUserNameOrEmailTextField.setFont(Font.font("System",12));
 
                 LoginScenePasswordTextField.setPrefHeight(30);
                 LoginScenePasswordTextField.setPrefWidth(367);
@@ -161,9 +180,9 @@ public class SceneLoginController {
                 LoginSceneCenterLabel.setPrefWidth(439.2);
                 LoginSceneCenterLabel.setFont(Font.font("Arial", FontWeight.BOLD,30));
 
-                LoginSceneEmailTextField.setPrefHeight(31);
-                LoginSceneEmailTextField.setPrefWidth(439.2);
-                LoginSceneEmailTextField.setFont(Font.font("System",12.5));
+                LoginSceneUserNameOrEmailTextField.setPrefHeight(31);
+                LoginSceneUserNameOrEmailTextField.setPrefWidth(439.2);
+                LoginSceneUserNameOrEmailTextField.setFont(Font.font("System",12.5));
 
                 LoginScenePasswordTextField.setPrefHeight(31);
                 LoginScenePasswordTextField.setPrefWidth(439.2);
@@ -193,9 +212,9 @@ public class SceneLoginController {
                 LoginSceneCenterLabel.setPrefWidth(511.4);
                 LoginSceneCenterLabel.setFont(Font.font("Arial", FontWeight.BOLD,31));
 
-                LoginSceneEmailTextField.setPrefHeight(32);
-                LoginSceneEmailTextField.setPrefWidth(511.4);
-                LoginSceneEmailTextField.setFont(Font.font("System",13));
+                LoginSceneUserNameOrEmailTextField.setPrefHeight(32);
+                LoginSceneUserNameOrEmailTextField.setPrefWidth(511.4);
+                LoginSceneUserNameOrEmailTextField.setFont(Font.font("System",13));
 
                 LoginScenePasswordTextField.setPrefHeight(32);
                 LoginScenePasswordTextField.setPrefWidth(511.4);
@@ -225,9 +244,9 @@ public class SceneLoginController {
                 LoginSceneCenterLabel.setPrefWidth(583.6);
                 LoginSceneCenterLabel.setFont(Font.font("Arial", FontWeight.BOLD,32));
 
-                LoginSceneEmailTextField.setPrefHeight(33);
-                LoginSceneEmailTextField.setPrefWidth(583.6);
-                LoginSceneEmailTextField.setFont(Font.font("System",13.5));
+                LoginSceneUserNameOrEmailTextField.setPrefHeight(33);
+                LoginSceneUserNameOrEmailTextField.setPrefWidth(583.6);
+                LoginSceneUserNameOrEmailTextField.setFont(Font.font("System",13.5));
 
                 LoginScenePasswordTextField.setPrefHeight(33);
                 LoginScenePasswordTextField.setPrefWidth(583.6);
@@ -257,9 +276,9 @@ public class SceneLoginController {
                 LoginSceneCenterLabel.setPrefWidth(655.8);
                 LoginSceneCenterLabel.setFont(Font.font("Arial", FontWeight.BOLD,33));
 
-                LoginSceneEmailTextField.setPrefHeight(34);
-                LoginSceneEmailTextField.setPrefWidth(655.8);
-                LoginSceneEmailTextField.setFont(Font.font("System",14));
+                LoginSceneUserNameOrEmailTextField.setPrefHeight(34);
+                LoginSceneUserNameOrEmailTextField.setPrefWidth(655.8);
+                LoginSceneUserNameOrEmailTextField.setFont(Font.font("System",14));
 
                 LoginScenePasswordTextField.setPrefHeight(34);
                 LoginScenePasswordTextField.setPrefWidth(655.8);
@@ -275,7 +294,7 @@ public class SceneLoginController {
             }
         });
 
-        LoginSceneEmailTextField.textProperty().addListener((observable, oldValue, newValue) -> changingLoginSceneRegistrationLabel());
+        LoginSceneUserNameOrEmailTextField.textProperty().addListener((observable, oldValue, newValue) -> changingLoginSceneRegistrationLabel());
         LoginScenePasswordTextField.textProperty().addListener((observable, oldValue, newValue) -> changingLoginSceneRegistrationLabel());
     }
 

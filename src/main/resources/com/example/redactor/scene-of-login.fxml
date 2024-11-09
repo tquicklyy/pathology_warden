@@ -24,9 +24,9 @@
                   <Font name="Arial Bold" size="29.0" />
                </font>
             </Label>
-            <TextField fx:id="LoginSceneEmailTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="367.0" promptText="Логин или адрес электронной почты" style="-fx-border-color: black; -fx-background-radius: 5px; -fx-border-radius: 5px;" VBox.vgrow="NEVER" />
+            <TextField fx:id="LoginSceneUserNameOrEmailTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="367.0" promptText="Логин или адрес электронной почты" style="-fx-border-color: black; -fx-background-radius: 5px; -fx-border-radius: 5px;" VBox.vgrow="NEVER" />
             <TextField fx:id="LoginScenePasswordTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="367.0" promptText="Пароль" style="-fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" />
-            <Label fx:id="LoginSceneLoginLabel" alignment="CENTER" prefHeight="37.0" prefWidth="130.0" styleClass="gray" stylesheets="@../../../cssStyle/registrationAndLoginLabel.css" text="Войти" textFill="WHITE">
+            <Label fx:id="LoginSceneLoginLabel" alignment="CENTER" onMouseClicked="#loginIntoAccount" prefHeight="37.0" prefWidth="130.0" styleClass="gray" stylesheets="@../../../cssStyle/registrationAndLoginLabel.css" text="Войти" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>

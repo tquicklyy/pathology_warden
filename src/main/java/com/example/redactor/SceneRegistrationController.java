@@ -119,7 +119,7 @@ public class SceneRegistrationController {
             UserSession.addUser(RegistrationSceneLoginTextField.getText(), RegistrationSceneEmailTextField.getText(), RegistrationScenePasswordTextField.getText().hashCode(), RegistrationSceneFirstNameTextField.getText(), RegistrationSceneSecondNameTextField.getText(), RegistrationScenePatronymicTextField.getText());
 
             currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-without-acc.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-with-acc.fxml"));
             newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
             currentStage.setScene(newScene);
         }

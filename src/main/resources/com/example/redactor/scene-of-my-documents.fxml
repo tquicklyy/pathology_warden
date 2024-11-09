@@ -4,30 +4,268 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="myDocumentsBorderPane" prefHeight="500.0" prefWidth="740.0" styleClass="root" stylesheets="@../../../cssStyle/mainMenuBorderPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.redactor.SceneMyDocumentsController">
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
             <children>
-            <VBox fx:id="myDocumentsCenterColoredVBox" alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="490.0" spacing="5.0" style="-fx-background-color: #FDE5E5;" VBox.vgrow="ALWAYS">
-               <children>
-                  <Label fx:id="myDocumentsFirstUpLabel" alignment="CENTER" prefWidth="490.0" text="Мои документы">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label text="Здесь представлены все сохранённые проверки и прочие файлы" />
-               </children>
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-            </VBox>
+            <ScrollPane hbarPolicy="NEVER" maxWidth="-Infinity" prefHeight="2000.0" prefWidth="490.0" style="-fx-background: #FDE5E5;" vbarPolicy="ALWAYS" VBox.vgrow="NEVER">
+               <content>
+                  <VBox fx:id="myDocumentsCenterColoredVBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="461.0" prefWidth="474.0" spacing="5.0" style="-fx-background-color: #FDE5E5;">
+                     <children>
+                        <Label fx:id="myDocumentsFirstUpLabel" alignment="CENTER" prefWidth="490.0" text="Мои документы">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Здесь представлены все сохранённые проверки и прочие файлы" />
+                        <HBox fx:id="myDocumentsEditHBox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="460.0" style="-fx-border-color: #FC7777;">
+                           <children>
+                              <Label fx:id="myDocumentsNameOfReportLabel" alignment="CENTER" prefHeight="17.0" prefWidth="236.0" text="Название отчёта (документа)">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <Line fx:id="myDocumentsLine" endY="29.0" stroke="#fc7777" strokeWidth="1.2" />
+                              <Label fx:id="myDocumentsNameOfPatientLabel" alignment="CENTER" prefHeight="17.0" prefWidth="230.0" text="ФИО">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="myDocumentsDeleteImageView" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/button-for-delete.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="2.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets right="3.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="myDocumentsEditHBox1" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="460.0" style="-fx-border-color: #FC7777;">
+                           <children>
+                              <Label fx:id="myDocumentsNameOfReportLabel1" alignment="CENTER" prefHeight="17.0" prefWidth="236.0" text="Название отчёта (документа)">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <Line fx:id="myDocumentsLine1" endY="29.0" stroke="#fc7777" strokeWidth="1.2" />
+                              <Label fx:id="myDocumentsNameOfPatientLabel1" alignment="CENTER" prefHeight="17.0" prefWidth="230.0" text="ФИО">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="myDocumentsDeleteImageView1" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/button-for-delete.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets right="3.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="2.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox fx:id="myDocumentsEditHBox2" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="460.0" style="-fx-border-color: #FC7777;">
+                           <children>
+                              <Label fx:id="myDocumentsNameOfReportLabel2" alignment="CENTER" prefHeight="17.0" prefWidth="236.0" text="Название отчёта (документа)">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <Line fx:id="myDocumentsLine2" endY="29.0" stroke="#fc7777" strokeWidth="1.2" />
+                              <Label fx:id="myDocumentsNameOfPatientLabel2" alignment="CENTER" prefHeight="17.0" prefWidth="230.0" text="ФИО">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="myDocumentsDeleteImageView2" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/button-for-delete.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets right="3.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="2.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox fx:id="myDocumentsEditHBox3" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="460.0" style="-fx-border-color: #FC7777;">
+                           <children>
+                              <Label fx:id="myDocumentsNameOfReportLabel3" alignment="CENTER" prefHeight="17.0" prefWidth="236.0" text="Название отчёта (документа)">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <Line fx:id="myDocumentsLine3" endY="29.0" stroke="#fc7777" strokeWidth="1.2" />
+                              <Label fx:id="myDocumentsNameOfPatientLabel3" alignment="CENTER" prefHeight="17.0" prefWidth="230.0" text="ФИО">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="myDocumentsDeleteImageView3" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/button-for-delete.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets right="3.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="2.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox fx:id="myDocumentsEditHBox4" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="460.0" style="-fx-border-color: #FC7777;">
+                           <children>
+                              <Label fx:id="myDocumentsNameOfReportLabel4" alignment="CENTER" prefHeight="17.0" prefWidth="236.0" text="Название отчёта (документа)">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <Line fx:id="myDocumentsLine4" endY="29.0" stroke="#fc7777" strokeWidth="1.2" />
+                              <Label fx:id="myDocumentsNameOfPatientLabel4" alignment="CENTER" prefHeight="17.0" prefWidth="230.0" text="ФИО">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="myDocumentsDeleteImageView4" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/button-for-delete.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets right="3.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="2.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox fx:id="myDocumentsEditHBox5" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="460.0" style="-fx-border-color: #FC7777;">
+                           <children>
+                              <Label fx:id="myDocumentsNameOfReportLabel5" alignment="CENTER" prefHeight="17.0" prefWidth="236.0" text="Название отчёта (документа)">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <Line fx:id="myDocumentsLine5" endY="29.0" stroke="#fc7777" strokeWidth="1.2" />
+                              <Label fx:id="myDocumentsNameOfPatientLabel5" alignment="CENTER" prefHeight="17.0" prefWidth="230.0" text="ФИО">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="myDocumentsDeleteImageView5" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/button-for-delete.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets right="3.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="2.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox fx:id="myDocumentsEditHBox6" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="460.0" style="-fx-border-color: #FC7777;">
+                           <children>
+                              <Label fx:id="myDocumentsNameOfReportLabel6" alignment="CENTER" prefHeight="17.0" prefWidth="236.0" text="Название отчёта (документа)">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <Line fx:id="myDocumentsLine6" endY="29.0" stroke="#fc7777" strokeWidth="1.2" />
+                              <Label fx:id="myDocumentsNameOfPatientLabel6" alignment="CENTER" prefHeight="17.0" prefWidth="230.0" text="ФИО">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="myDocumentsDeleteImageView6" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/button-for-delete.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets right="3.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="2.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox fx:id="myDocumentsEditHBox7" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="460.0" style="-fx-border-color: #FC7777;">
+                           <children>
+                              <Label fx:id="myDocumentsNameOfReportLabel7" alignment="CENTER" prefHeight="17.0" prefWidth="236.0" text="Название отчёта (документа)">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <Line fx:id="myDocumentsLine7" endY="29.0" stroke="#fc7777" strokeWidth="1.2" />
+                              <Label fx:id="myDocumentsNameOfPatientLabel7" alignment="CENTER" prefHeight="17.0" prefWidth="230.0" text="ФИО">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="myDocumentsDeleteImageView7" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/button-for-delete.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets right="3.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="2.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
             </children>
             <BorderPane.margin>
                 <Insets />
