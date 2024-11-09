@@ -81,7 +81,7 @@ public class SceneMainMenuWithoutAccController {
     @FXML
     private HBox mainMenuTopHBox;
 
-    private Stage currentStage;
+    public static Stage currentStage;
 
     private Scene newScene;
 

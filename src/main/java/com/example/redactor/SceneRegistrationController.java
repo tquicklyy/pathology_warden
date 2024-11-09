@@ -2,16 +2,17 @@ package com.example.redactor;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -41,7 +42,7 @@ public class SceneRegistrationController {
     private Label RegistrationSceneNameOfProjectLabel;
 
     @FXML
-    private TextField RegistrationScenePasswordTextField;
+    private PasswordField RegistrationScenePasswordTextField;
 
     @FXML
     private TextField RegistrationSceneFirstNameTextField;
@@ -74,6 +75,12 @@ public class SceneRegistrationController {
     private Scene newScene;
 
     private boolean isRegistrationSceneRegistrationLabelRed;
+
+    private static Alert alertWhenSomethingWrong;
+
+    Pattern patternForFirstAndLastName = Pattern.compile("^[A-Za-zА-Яа-яЁё]+([-\\s][A-Za-zА-Яа-яЁё]+)*$");
+    Pattern patternForPatronymic = Pattern.compile("^[A-Za-zА-Яа-яЁё]+([\\s-][A-Za-zА-Яа-яЁё]+)*$");
+    Pattern patternForEmail = Pattern.compile("([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)");
 
     @FXML
     private void switchingToTheMainMenuForButton(ActionEvent event) throws IOException {
@@ -115,14 +122,54 @@ public class SceneRegistrationController {
 
     @FXML
     private void registerNewAccount(MouseEvent event) throws IOException {
-        if(isRegistrationSceneRegistrationLabelRed) {
-            UserSession.addUser(RegistrationSceneLoginTextField.getText(), RegistrationSceneEmailTextField.getText(), RegistrationScenePasswordTextField.getText().hashCode(), RegistrationSceneFirstNameTextField.getText(), RegistrationSceneSecondNameTextField.getText(), RegistrationScenePatronymicTextField.getText());
+        Matcher matcherForFirstName = patternForFirstAndLastName.matcher(RegistrationSceneFirstNameTextField.getText());
+        Matcher matcherForLastName = patternForFirstAndLastName.matcher(RegistrationSceneSecondNameTextField.getText());
+        Matcher matcherForPatronymic = patternForPatronymic.matcher(RegistrationScenePatronymicTextField.getText());
+        Matcher matcherForEmail = patternForEmail.matcher(RegistrationSceneEmailTextField.getText());
 
+        if(isRegistrationSceneRegistrationLabelRed) {
+            if(RegistrationScenePasswordTextField.getText().length() < 8) {
+                alertOn("Пароль не должен быть короче 8 символов");
+                return;
+            } else if(RegistrationScenePasswordTextField.getText().length() > 30) {
+                alertOn("Пароль не должен быть длиннее 30 символов");
+                return;
+            } else if(RegistrationSceneLoginTextField.getText().length() < 5) {
+                alertOn("Логин не должен быть короче 5 символов");
+                return;
+            } else if(RegistrationSceneLoginTextField.getText().length() > 30) {
+                alertOn("Логин не должен быть длиннее 30 символов");
+                return;
+            } else if(!matcherForFirstName.find()) {
+                alertOn("Имя введено некорректно");
+                return;
+            } else if(!matcherForLastName.find()) {
+                alertOn("Фамилия введена некорректно");
+                return;
+            } else if(!matcherForPatronymic.find()) {
+                alertOn("Отчество введено некорректно");
+                return;
+            } else if(!matcherForEmail.find()) {
+                alertOn("Почта введена некорректно");
+                return;
+            }
+            UserSession.addUser(RegistrationSceneLoginTextField.getText(), RegistrationSceneEmailTextField.getText(), RegistrationScenePasswordTextField.getText().hashCode(), RegistrationSceneFirstNameTextField.getText(), RegistrationSceneSecondNameTextField.getText(), RegistrationScenePatronymicTextField.getText());
             currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(PathologyWardenApplication.class.getResource("scene-main-menu-with-acc.fxml"));
             newScene = new Scene(fxmlLoader.load(), currentStage.getScene().getWidth(), currentStage.getScene().getHeight());
             currentStage.setScene(newScene);
         }
+    }
+
+    public static void alertOn(String info) {
+        Platform.runLater(() -> {
+            alertWhenSomethingWrong = new Alert(Alert.AlertType.ERROR);
+            alertWhenSomethingWrong.initOwner(SceneMainMenuWithoutAccController.currentStage);
+            alertWhenSomethingWrong.setTitle("Ошибка регистрации");
+            alertWhenSomethingWrong.setHeaderText(info);
+            alertWhenSomethingWrong.setContentText("Проверьте данные и попробуйте ещё раз.");
+            alertWhenSomethingWrong.showAndWait();
+        });
     }
 
     @FXML

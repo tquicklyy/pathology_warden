@@ -3,6 +3,8 @@ package com.example.redactor;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,10 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -52,7 +51,7 @@ public class SceneLoginController {
     private Label LoginSceneNameOfProjectLabel;
 
     @FXML
-    private TextField LoginScenePasswordTextField;
+    private PasswordField LoginScenePasswordTextField;
 
     @FXML
     private Button LoginSceneToMenuButton;

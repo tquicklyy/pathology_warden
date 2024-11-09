@@ -4,6 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -48,10 +49,11 @@
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor></TextField>
-            <TextField fx:id="RegistrationScenePasswordTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="367.0" promptText="Пароль" style="-fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+            <PasswordField fx:id="RegistrationScenePasswordTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="367.0" promptText="Пароль" style="-fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;">
                <cursor>
                   <Cursor fx:constant="TEXT" />
-               </cursor></TextField>
+               </cursor>
+            </PasswordField>
             <Label fx:id="RegistrationSceneRegistrationLabel" alignment="CENTER" onMouseClicked="#registerNewAccount" prefHeight="37.0" prefWidth="192.0" styleClass="gray" stylesheets="@../../../cssStyle/registrationAndLoginLabel.css" text="Зарегистрироваться" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="15.0" />
